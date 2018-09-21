@@ -1,0 +1,84 @@
+{
+  "default": {
+    "geoMapData": [
+      {
+        "coordinates": {
+          "lat": -37.5621587,
+          "lng": 143.8502556
+        },
+        "geoName": "Ballarat",
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "formattedValue": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "maxValueIndex": 0,
+        "hasData": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "coordinates": {
+          "lat": -37.8136276,
+          "lng": 144.9630576
+        },
+        "geoName": "Melbourne",
+        "value": [
+          40,
+          55,
+          1,
+          4
+        ],
+        "formattedValue": [
+          "40%",
+          "55%",
+          "1%",
+          "4%"
+        ],
+        "maxValueIndex": 1,
+        "hasData": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "coordinates": {
+          "lat": -38.1499181,
+          "lng": 144.3617186
+        },
+        "geoName": "Geelong",
+        "value": [
+          43,
+          52,
+          0,
+          5
+        ],
+        "formattedValue": [
+          "43%",
+          "52%",
+          "",
+          "5%"
+        ],
+        "maxValueIndex": 1,
+        "hasData": [
+          true,
+          true,
+          false,
+          true
+        ]
+      }
+    ]
+  }
+}

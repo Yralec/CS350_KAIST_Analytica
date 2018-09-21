@@ -1,0 +1,552 @@
+{
+	"default": {
+		"rankedList": [{
+			"rankedKeyword": [{
+				"query": "liberal party",
+				"value": 100,
+				"formattedValue": "100",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+party&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal australia",
+				"value": 40,
+				"formattedValue": "40",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+australia&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labour",
+				"value": 25,
+				"formattedValue": "25",
+				"hasData": true,
+				"link": "/trends/explore?q=labour&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal party australia",
+				"value": 21,
+				"formattedValue": "21",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+party+australia&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor",
+				"value": 20,
+				"formattedValue": "20",
+				"hasData": true,
+				"link": "/trends/explore?q=labor&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal victoria",
+				"value": 16,
+				"formattedValue": "16",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+victoria&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "australian liberal party",
+				"value": 15,
+				"formattedValue": "15",
+				"hasData": true,
+				"link": "/trends/explore?q=australian+liberal+party&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal arts",
+				"value": 12,
+				"formattedValue": "12",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+arts&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal democrats",
+				"value": 12,
+				"formattedValue": "12",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+democrats&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "how to vote liberal",
+				"value": 11,
+				"formattedValue": "11",
+				"hasData": true,
+				"link": "/trends/explore?q=how+to+vote+liberal&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor party",
+				"value": 10,
+				"formattedValue": "10",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+party&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal policies",
+				"value": 9,
+				"formattedValue": "9",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+policies&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal party of australia",
+				"value": 9,
+				"formattedValue": "9",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+party+of+australia&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labour party",
+				"value": 9,
+				"formattedValue": "9",
+				"hasData": true,
+				"link": "/trends/explore?q=labour+party&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal government",
+				"value": 9,
+				"formattedValue": "9",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+government&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal party victoria",
+				"value": 8,
+				"formattedValue": "8",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+party+victoria&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "greens",
+				"value": 8,
+				"formattedValue": "8",
+				"hasData": true,
+				"link": "/trends/explore?q=greens&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal definition",
+				"value": 8,
+				"formattedValue": "8",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+definition&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal vs labour",
+				"value": 7,
+				"formattedValue": "7",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+vs+labour&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal party policies",
+				"value": 6,
+				"formattedValue": "6",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+party+policies&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "election 2016",
+				"value": 6,
+				"formattedValue": "6",
+				"hasData": true,
+				"link": "/trends/explore?q=election+2016&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal democracy",
+				"value": 6,
+				"formattedValue": "6",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+democracy&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal national party",
+				"value": 6,
+				"formattedValue": "6",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+national+party&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal leadership",
+				"value": 6,
+				"formattedValue": "6",
+				"hasData": true,
+				"link": "/trends/explore?q=liberal+leadership&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "daily liberal",
+				"value": 6,
+				"formattedValue": "6",
+				"hasData": true,
+				"link": "/trends/explore?q=daily+liberal&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}]
+		}, {
+			"rankedKeyword": [{
+				"query": "election 2016",
+				"value": 114650,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=election+2016&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "how to vote liberal 2016",
+				"value": 59350,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=how+to+vote+liberal+2016&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal vs labour 2016",
+				"value": 30050,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=liberal+vs+labour+2016&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "andrew bolt",
+				"value": 24450,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=andrew+bolt&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "animal justice party",
+				"value": 14650,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=animal+justice+party&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "james newbury liberal",
+				"value": 4800,
+				"formattedValue": "+4,800%",
+				"link": "/trends/explore?q=james+newbury+liberal&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "malcolm turnbull",
+				"value": 1650,
+				"formattedValue": "+1,650%",
+				"link": "/trends/explore?q=malcolm+turnbull&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal spill",
+				"value": 950,
+				"formattedValue": "+950%",
+				"link": "/trends/explore?q=liberal+spill&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal party spill",
+				"value": 300,
+				"formattedValue": "+300%",
+				"link": "/trends/explore?q=liberal+party+spill&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal leadership",
+				"value": 250,
+				"formattedValue": "+250%",
+				"link": "/trends/explore?q=liberal+leadership&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal meaning",
+				"value": 250,
+				"formattedValue": "+250%",
+				"link": "/trends/explore?q=liberal+meaning&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal democrats australia",
+				"value": 200,
+				"formattedValue": "+200%",
+				"link": "/trends/explore?q=liberal+democrats+australia&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "bill shorten",
+				"value": 200,
+				"formattedValue": "+200%",
+				"link": "/trends/explore?q=bill+shorten&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal democrats",
+				"value": 180,
+				"formattedValue": "+180%",
+				"link": "/trends/explore?q=liberal+democrats&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal how to vote card",
+				"value": 110,
+				"formattedValue": "+110%",
+				"link": "/trends/explore?q=liberal+how+to+vote+card&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal leadership spill",
+				"value": 110,
+				"formattedValue": "+110%",
+				"link": "/trends/explore?q=liberal+leadership+spill&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal definition",
+				"value": 100,
+				"formattedValue": "+100%",
+				"link": "/trends/explore?q=liberal+definition&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal democrat",
+				"value": 90,
+				"formattedValue": "+90%",
+				"link": "/trends/explore?q=liberal+democrat&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal arts movie",
+				"value": 80,
+				"formattedValue": "+80%",
+				"link": "/trends/explore?q=liberal+arts+movie&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal vs labour",
+				"value": 80,
+				"formattedValue": "+80%",
+				"link": "/trends/explore?q=liberal+vs+labour&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "liberal democracy",
+				"value": 60,
+				"formattedValue": "+60%",
+				"link": "/trends/explore?q=liberal+democracy&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "how to vote liberal",
+				"value": 40,
+				"formattedValue": "+40%",
+				"link": "/trends/explore?q=how+to+vote+liberal&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}]
+		}]
+	}
+} {
+	"default": {
+		"rankedList": [{
+			"rankedKeyword": [{
+				"query": "labor day",
+				"value": 100,
+				"formattedValue": "100",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+day&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor party",
+				"value": 78,
+				"formattedValue": "78",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+party&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labour",
+				"value": 65,
+				"formattedValue": "65",
+				"hasData": true,
+				"link": "/trends/explore?q=labour&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "australian labor",
+				"value": 36,
+				"formattedValue": "36",
+				"hasData": true,
+				"link": "/trends/explore?q=australian+labor&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor victoria",
+				"value": 32,
+				"formattedValue": "32",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+victoria&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "australian labor party",
+				"value": 22,
+				"formattedValue": "22",
+				"hasData": true,
+				"link": "/trends/explore?q=australian+labor+party&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "election",
+				"value": 21,
+				"formattedValue": "21",
+				"hasData": true,
+				"link": "/trends/explore?q=election&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor government",
+				"value": 17,
+				"formattedValue": "17",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+government&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "child labor",
+				"value": 16,
+				"formattedValue": "16",
+				"hasData": true,
+				"link": "/trends/explore?q=child+labor&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2017",
+				"value": 16,
+				"formattedValue": "16",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+day+2017&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2016",
+				"value": 15,
+				"formattedValue": "15",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+day+2016&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "victorian labor",
+				"value": 14,
+				"formattedValue": "14",
+				"hasData": true,
+				"link": "/trends/explore?q=victorian+labor&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor party australia",
+				"value": 14,
+				"formattedValue": "14",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+party+australia&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2015",
+				"value": 13,
+				"formattedValue": "13",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+day+2015&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day victoria",
+				"value": 12,
+				"formattedValue": "12",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+day+victoria&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "vic labor",
+				"value": 12,
+				"formattedValue": "12",
+				"hasData": true,
+				"link": "/trends/explore?q=vic+labor&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor policies",
+				"value": 11,
+				"formattedValue": "11",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+policies&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day weekend",
+				"value": 11,
+				"formattedValue": "11",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+day+weekend&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day australia",
+				"value": 11,
+				"formattedValue": "11",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+day+australia&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day melbourne",
+				"value": 10,
+				"formattedValue": "10",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+day+melbourne&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "alp",
+				"value": 9,
+				"formattedValue": "9",
+				"hasData": true,
+				"link": "/trends/explore?q=alp&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "greens",
+				"value": 9,
+				"formattedValue": "9",
+				"hasData": true,
+				"link": "/trends/explore?q=greens&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day holiday",
+				"value": 8,
+				"formattedValue": "8",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+day+holiday&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "bill shorten",
+				"value": 7,
+				"formattedValue": "7",
+				"hasData": true,
+				"link": "/trends/explore?q=bill+shorten&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor leader",
+				"value": 7,
+				"formattedValue": "7",
+				"hasData": true,
+				"link": "/trends/explore?q=labor+leader&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}]
+		}, {
+			"rankedKeyword": [{
+				"query": "labor day 2017",
+				"value": 179200,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=labor+day+2017&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2016",
+				"value": 171800,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=labor+day+2016&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "election 2016",
+				"value": 74700,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=election+2016&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2018",
+				"value": 47600,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=labor+day+2018&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor negative gearing",
+				"value": 35500,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=labor+negative+gearing&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day weekend 2017",
+				"value": 33900,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=labor+day+weekend+2017&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2017 victoria",
+				"value": 30250,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=labor+day+2017+victoria&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2016 victoria",
+				"value": 30100,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=labor+day+2016+victoria&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2018 victoria",
+				"value": 26050,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=labor+day+2018+victoria&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day weekend 2016",
+				"value": 25600,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=labor+day+weekend+2016&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "easter 2018",
+				"value": 12700,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=easter+2018&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "animal justice party",
+				"value": 12600,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=animal+justice+party&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "when is labor day 2015",
+				"value": 12500,
+				"formattedValue": "Breakout",
+				"link": "/trends/explore?q=when+is+labor+day+2015&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day victoria 2015",
+				"value": 500,
+				"formattedValue": "+500%",
+				"link": "/trends/explore?q=labor+day+victoria+2015&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2015 vic",
+				"value": 400,
+				"formattedValue": "+400%",
+				"link": "/trends/explore?q=labor+day+2015+vic&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "industrial revolution",
+				"value": 300,
+				"formattedValue": "+300%",
+				"link": "/trends/explore?q=industrial+revolution&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day 2015",
+				"value": 250,
+				"formattedValue": "+250%",
+				"link": "/trends/explore?q=labor+day+2015&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "bill shorten",
+				"value": 250,
+				"formattedValue": "+250%",
+				"link": "/trends/explore?q=bill+shorten&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day weekend 2015",
+				"value": 110,
+				"formattedValue": "+110%",
+				"link": "/trends/explore?q=labor+day+weekend+2015&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "child labor",
+				"value": 80,
+				"formattedValue": "+80%",
+				"link": "/trends/explore?q=child+labor&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day vic",
+				"value": 70,
+				"formattedValue": "+70%",
+				"link": "/trends/explore?q=labor+day+vic&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "what is labor day",
+				"value": 60,
+				"formattedValue": "+60%",
+				"link": "/trends/explore?q=what+is+labor+day&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "open labor",
+				"value": 50,
+				"formattedValue": "+50%",
+				"link": "/trends/explore?q=open+labor&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor policies",
+				"value": 50,
+				"formattedValue": "+50%",
+				"link": "/trends/explore?q=labor+policies&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}, {
+				"query": "labor day victoria",
+				"value": 40,
+				"formattedValue": "+40%",
+				"link": "/trends/explore?q=labor+day+victoria&date=2015-01-1+2018-01-1&geo=AU-VIC"
+			}]
+		}]
+	}
+}

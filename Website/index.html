@@ -12,9 +12,14 @@
 
 	<button>Country Prediction</button>
 
+
 	<div id="menu">
 
+
 		<div id="states"></div>
+
+		<div id=resultText></div>
+		<p></p>
 
 		<select id="selection" onchange="selectState(this.value)">
 			<option disabled selected value> -- select an option -- </option>
@@ -50,6 +55,7 @@
 
 			document.getElementById("title").innerHTML = "Northern Territory"
 			document.getElementById("selection").value = id
+			document.getElementById("resultText").innerHTML = "The Australian Labour Party will win the state elections"
 
 			x = stateIds.indexOf(id)
 			behaviour = 1

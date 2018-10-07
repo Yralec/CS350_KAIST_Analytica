@@ -8,11 +8,9 @@
 
 <body>
 
-	<div id="AUNT" hidden="true">
+	<h1 id=title>Select a state:</h1>
 
-		<h1>Northern Territory</h1>
-
-	</div>
+	<button>Country Prediction</button>
 
 	<div id="menu">
 
@@ -48,7 +46,9 @@
 		}
 
 		function selectState(id){
-			document.getElementById(id).hidden = false
+
+			document.getElementById("selection").hidden = true
+			document.getElementById("title").innerHTML = "Northern Territory"
 
 			x = stateIds.indexOf(id)
 			behaviour = 1

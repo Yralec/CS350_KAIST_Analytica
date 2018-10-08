@@ -4899,24 +4899,6 @@
 											}
 										},
 										{
-											"_type": "UMLActivationView",
-											"_id": "AAAAAAFmGsr6kDKi914=",
-											"font": "Arial;13;0",
-											"left": 765,
-											"top": 128,
-											"width": 14,
-											"height": 297
-										},
-										{
-											"_type": "UMLActivationView",
-											"_id": "AAAAAAFmORUxspX/G9E=",
-											"font": "Arial;13;0",
-											"left": 772,
-											"top": 172,
-											"width": 14,
-											"height": 141
-										},
-										{
 											"_type": "UMLSeqMessageView",
 											"_id": "AAAAAAFmGsr6kDKegNg=",
 											"_parent": {
@@ -6331,27 +6313,6 @@
 											"activation": {
 												"$ref": "AAAAAAFmGtEHnDP5ubM="
 											}
-										},
-										{
-											"_type": "UMLInteractionOperandView",
-											"_id": "AAAAAAFmOQ6OhpSnPsg=",
-											"subViews": [
-												{
-													"_type": "LabelView",
-													"_id": "AAAAAAFmOQ6OhpSoekc=",
-													"font": "Arial;13;0",
-													"left": 484,
-													"top": 198,
-													"width": 263.78955078125,
-													"height": 13,
-													"text": "[Google trends data on state is not up to date]"
-												}
-											],
-											"font": "Arial;13;0",
-											"left": 464,
-											"top": 183,
-											"width": 577,
-											"height": 43
 										},
 										{
 											"_type": "UMLCombinedFragmentView",
@@ -7897,7 +7858,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFmTamkKgpO4bg="
 					},
-					"name": "Role1"
+					"name": "Role1",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -7905,7 +7867,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFmTamkKgpO4bg="
 					},
-					"name": "Role2"
+					"name": "Role2",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -7913,7 +7876,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFmTamkKgpO4bg="
 					},
-					"name": "Role3"
+					"name": "Role3",
+					"type": ""
 				}
 			]
 		}

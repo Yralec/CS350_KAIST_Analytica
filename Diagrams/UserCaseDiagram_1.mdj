@@ -4868,8 +4868,8 @@
 														"$ref": "AAAAAAFmTbWw5AvY9Ug="
 													},
 													"font": "Arial;13;0",
-													"left": 856.5,
-													"top": 278,
+													"left": 472.5,
+													"top": 726,
 													"height": 13
 												},
 												{
@@ -4879,16 +4879,16 @@
 														"$ref": "AAAAAAFmTbWw5AvY9Ug="
 													},
 													"font": "Arial;13;0",
-													"left": 717,
-													"top": 165,
+													"left": 333,
+													"top": 613,
 													"width": 16.1708984375,
 													"height": 13,
 													"text": "ref"
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 712,
-											"top": 160,
+											"left": 328,
+											"top": 608,
 											"width": 289,
 											"height": 249,
 											"nameLabel": {
@@ -6331,8 +6331,8 @@
 														"$ref": "AAAAAAFmOQ6OUJSY1rw="
 													},
 													"font": "Arial;13;0",
-													"left": 773.07177734375,
-													"top": 637,
+													"left": 501.07177734375,
+													"top": 165,
 													"width": 167.42919921875,
 													"height": 13,
 													"text": "Google Trends Data retrieval"
@@ -6344,8 +6344,8 @@
 														"$ref": "AAAAAAFmOQ6OUJSY1rw="
 													},
 													"font": "Arial;13;1",
-													"left": 749,
-													"top": 637,
+													"left": 477,
+													"top": 165,
 													"width": 19.07177734375,
 													"height": 13,
 													"text": "opt"
@@ -6377,16 +6377,16 @@
 																		"$ref": "AAAAAAFmOQ6OhpSnPsg="
 																	},
 																	"font": "Arial;13;0",
-																	"left": 764,
-																	"top": 670,
+																	"left": 492,
+																	"top": 198,
 																	"width": 263.78955078125,
 																	"height": 13,
 																	"text": "[Google trends data on state is not up to date]"
 																}
 															],
 															"font": "Arial;13;0",
-															"left": 744,
-															"top": 655,
+															"left": 472,
+															"top": 183,
 															"width": 577,
 															"height": 43,
 															"guardLabel": {
@@ -6395,15 +6395,15 @@
 														}
 													],
 													"font": "Arial;13;0",
-													"left": 744,
-													"top": 655,
+													"left": 472,
+													"top": 183,
 													"width": 577,
 													"height": 43
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 744,
-											"top": 632,
+											"left": 472,
+											"top": 160,
 											"width": 577,
 											"height": 225,
 											"nameLabel": {

@@ -10,15 +10,15 @@
 
 	<h1 id=title>Select a state:</h1>
 
-	<button onmousedown="predictCountry()">Country Prediction </button>
-
+	<button class="main" onmousedown="predictCountry()">Country Prediction</button>
+	<button class="sub" hidden onmousedown="simulatePoll()">Simulate Poll</button>
 
 	<div id="menu">
 
 
 		<div id="states"></div>
 
-		<div id=resultText></div>
+		<div class="sub" id=resultText></div>
 		<p></p>
 
 		<select id="selection" onchange="selectState(this.value)">
@@ -59,6 +59,10 @@
 
 			x = stateIds.indexOf(id)
 			behaviour = 1
+
+			//setAll("main", "hidden", true)
+			removeAll("sub", "hidden")
+
 			for(var i = 0; i < states.length; i++){
 				if(i != x){
 					states[i].node.setAttribute('fill', 'lightgrey')
@@ -89,7 +93,7 @@
 			} else {
 				document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
 			}
-			
+
 		}
 
 		/**
@@ -97,6 +101,19 @@
 		 *
 		 * https://www.amcharts.com/svg-maps/?map=australia
 		 */
+
+		function setAll(str, attr, val){
+			var h = document.getElementsByClassName(str)
+			for(var i = 0; i < h.length; ++i){
+				h[i].setAttribute(attr, val)
+			}
+		}
+		function removeAll(str, attr){
+			var h = document.getElementsByClassName(str)
+			for(var i = 0; i < h.length; ++i){
+				h[i].removeAttribute(attr)
+			}
+		}
 
 	</script>
 

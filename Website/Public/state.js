@@ -29,11 +29,15 @@ State.prototype.id = function() {return this.info.data().id}
 State.prototype.name = function() {return this.info.attr('title')}
 State.prototype.node = function() {return this.info.node}
 State.prototype.predictionRequest = function() {
+    this.prediction = null//reset result in case of consecutive requests
 	server = ""
     var xhr = new XMLHttpRequest();
     xhr.responseType = "json";
     xhr.open('GET', server+'/prediction/'+this.id())
-    xhr.onload = () => this.prediction = xhr.response.prediction
+    xhr.onload = () => {
+        this.prediction = xhr.response.prediction
+        drawCountry()
+    }
     xhr.send();
 
     

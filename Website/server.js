@@ -35,9 +35,10 @@ function statePrediction(state){
 		location: "AU-VIC",
 		keywords: ["Liberal", "Labor", "Labour", "ALP", "LNP", "CLP"],
 		startDate: new Date("2015-01-01"),
-		endDate: new Date("2018-01-01")
+		endDate: new Date("2018-01-01"),
+		dataRetriever: dataRetriever
 	}
-	var parsedData = getGoogleTrendsData(state, )
+	var parsedData = getGoogleTrendsData(attr)
 	if(parsedData == null){
 		return null
 	}
@@ -48,13 +49,14 @@ function statePrediction(state){
 
 //REST API
 app.get("/prediction/:stateId", (req, res) =>{
-	//var state = req.session.stateId
-	//var prediction = statePrediction(state)
-	var prediction = 4
+	var state = req.session.stateId
+	var prediction = statePrediction(state)
+
 	if(prediction == null){
 		res.status(404).send()
 	}
-	res.status(200).send(Math.round(Math.random()))
+	var x = Math.round(Math.random())
+	res.status(200).send({prediction: x})
 });
 
 app.listen(port);

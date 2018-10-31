@@ -25,13 +25,19 @@ function getGoogleTrendsData(state){
 		return null
 	}
 	var parsedData = dataParser.parseData({	retriever: dataRetriever,
-							mode: dataTypeEnum.TIME
+							mode: dataTypeEnum.TIME,
 							country: "AU",
 							state: state})
 }
 
 function statePrediction(state){
-	var parsedData = getGoogleTrendsData(state)
+	var attr = {
+		location: "AU-VIC",
+		keywords: ["Liberal", "Labor", "Labour", "ALP", "LNP", "CLP"],
+		startDate: new Date("2015-01-01"),
+		endDate: new Date("2018-01-01")
+	}
+	var parsedData = getGoogleTrendsData(state, )
 	if(parsedData == null){
 		return null
 	}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> KAIST Analytica</title>
+</head>
+
+<body>
+
+	<h1 id=title>Select a state:</h1>
+
+	<button class="main" onmousedown="predictCountry()">Country Prediction</button>
+	<button class="sub" hidden onmousedown="simulatePoll()">Simulate Poll</button>
+
+	<div id="menu">
+
+
+		<div id="states"></div>
+
+		<div class="sub" id=resultText></div>
+		<p></p>
+
+		<select id="selection" onchange="selectState(this.value)">
+			<option disabled selected value> -- select an option -- </option>
+			<option value="AUNT">Northern Territory</option>
+			<option value="AUWA">Western Australia</option>
+			<option value="AUACT">Australian Capital Territory</option>
+			<option value="AUNSW">New South Wales</option>
+			<option value="AUSA">South Australia</option>
+			<option value="AUVIC">Victoria</option>
+			<option value="AUQLD">Queensland</option>
+			<option value="AUTAS">Tasmania</option>
+		</select>
+
+	</div>
+
+
+	<script src="raphael-min.js"></script>
+	<script src="state.js"></script>
+    <script src="map.js"></script>
+
+</body>
+
+</html>

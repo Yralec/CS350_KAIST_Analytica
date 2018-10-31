@@ -3,6 +3,9 @@
 function State(info, result=null) {
     this.info = info
 }
+
+
+
 State.prototype.color = function() {
 	if(this.result == 0){
     	return 'blue'

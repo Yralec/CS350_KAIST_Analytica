@@ -1,3 +1,15 @@
+
+var stateEnum = {
+    AUNT : 0,
+    AUWA : 1,
+    AUACT : 2,
+    AUNSW : 3,
+    AUSA : 4,
+    AUVIC : 5,
+    AUQLD : 6,
+    AUTAS : 7
+}
+
 var rsr = Raphael('states', 500, 450);
 var states = []
 var country
@@ -69,14 +81,20 @@ function predictCountry(){
 
 		}
 
-function selectState(state){
+function selectState(s){
+
+			var state
+			if( (typeof s) == "string"){
+				state = states[s]
+			} else {
+				state = s
+			}
 
 			if(state.result == null ) {
 				//state.predictionRequest()
 			}
-
-			document.getElementById("title").innerHTML = state.name()
 			document.getElementById("selection").value = state
+			document.getElementById("title").innerHTML = state.name()
 			document.getElementById("resultText").innerHTML = "The Australian Labour Party will win the state elections"
 
 			behaviour = 1
@@ -94,6 +112,7 @@ function selectState(state){
 				
 			
 		}
+
 
 function setAll(str, attr, val){
 	var h = document.getElementsByClassName(str)

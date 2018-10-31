@@ -15,7 +15,7 @@ app.use(express.static('Public'));
 var hypothesis = null
 var cachedDataPath = "/data"
 var predictions = {
-	lastUpdate: ""
+	lastUpdate: "",
 	states: []
 }
 
@@ -25,7 +25,7 @@ function getGoogleTrendsData(state){
 		return null
 	}
 	var parsedData = dataParser.parseData({	retriever: dataRetriever,
-							mode: dataTypeEnum.TIME
+							mode: dataTypeEnum.TIME,
 							country: "AU",
 							state: state})
 }

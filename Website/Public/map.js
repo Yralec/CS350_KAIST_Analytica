@@ -59,24 +59,7 @@ for (var i = 0; i < states.length; i++) {
 function predictCountry(){
 
 			countryPredictionRequest()
-
-			var red = 0
-
-
-			behaviour = 1
-			for(var i = 0; i < states.length; i++){
-				
-				states[i].node().setAttribute('fill', states[i].color())
-				red += (red + (states[i].result == null? 1 : states[i].result))
-				
-			}
-			if(red > 4){
-				document.getElementById("title").innerHTML = "The Australian Labor Party will hold the majority of the states"
-			} else if (red < 4){
-				document.getElementById("title").innerHTML = "The National Liberal Party will hold the majority of the states"
-			} else {
-				document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
-			}
+			drawCountry()
 			
 
 		}
@@ -135,5 +118,36 @@ function countryPredictionRequest(){
 		
 	}
 }
+
+function drawCountry(){
+
+
+	behaviour = 1
+	for(var i = 0; i < states.length; i++){
+		
+		states[i].node().setAttribute('fill', states[i].color())
+		
+		
+	}
+	var red = 0
+	var ended = states[0].prediction!=null//if prediction is null then all the results were not received
+	for(var i = 0 ; ended && i < states.length; ++i){
+		red+= states[i].prediction
+		ended = (states[i].prediction != null)
+	}
+
+	
+	if(ended){
+		if(red > 4){
+			document.getElementById("title").innerHTML = "The Australian Labor Party will hold the majority of the states"
+		} else if (red < 4){
+			document.getElementById("title").innerHTML = "The National Liberal Party will hold the majority of the states"
+		} else {
+			document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
+		}
+	}
+	
+}
+
 
 

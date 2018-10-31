@@ -11,4 +11,4 @@ var dataParser = {
 
 }
 
-export.modules = dataParser
+exports.module = dataParser

@@ -3,7 +3,7 @@
  * @param 
  * @param {[type]}
  */
-function State(info, result=null) {
+function State(info, prediction=null) {
     this.info = info
 }
 
@@ -12,9 +12,9 @@ function State(info, result=null) {
  * @return {the color of the corresponding state}
  */
 State.prototype.color = function() {
-	if(this.result == 0){
+	if(this.prediction == 0){
     	return 'blue'
-	} else if (this.result == 1){
+	} else if (this.prediction == 1){
 		return 'red'
     } else {
     	return 'purple'
@@ -31,9 +31,11 @@ State.prototype.node = function() {return this.info.node}
 State.prototype.predictionRequest = function() {
 	server = ""
     var xhr = new XMLHttpRequest();
+    xhr.responseType = "json";
     xhr.open('GET', server+'/prediction/'+this.id())
-    xhr.onload = ()=>{window.location.replace(window.location.origin+'/')}
+    xhr.onload = () => this.prediction = xhr.response.prediction
     xhr.send();
+
     
 }
 

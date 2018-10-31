@@ -54,7 +54,9 @@ app.get("/prediction/:stateId", (req, res) =>{
 	if(prediction == null){
 		res.status(404).send()
 	}
-	res.status(200).send(Math.round(Math.random()))
+	
+	var x = Math.round(Math.random())
+	res.status(200).send({prediction: x})
 });
 
 app.listen(port);

@@ -15,7 +15,7 @@ app.use(express.static('Public'));
 var hypothesis = null
 var cachedDataPath = "/data"
 var predictions = {
-	lastUpdate: ""
+	lastUpdate: "",
 	states: []
 }
 

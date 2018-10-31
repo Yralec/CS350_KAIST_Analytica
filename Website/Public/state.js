@@ -1,8 +1,16 @@
 
-
+/**
+ * @param 
+ * @param {[type]}
+ */
 function State(info, result=null) {
     this.info = info
 }
+
+
+/**
+ * @return {the color of the corresponding state}
+ */
 State.prototype.color = function() {
 	if(this.result == 0){
     	return 'blue'
@@ -13,6 +21,10 @@ State.prototype.color = function() {
     }
 
 }
+/**
+ * @param  {[type]}
+ * @return {[type]}
+ */
 State.prototype.id = function() {return this.info.data().id}
 State.prototype.name = function() {return this.info.attr('title')}
 State.prototype.node = function() {return this.info.node}

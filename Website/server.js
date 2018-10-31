@@ -50,11 +50,11 @@ function statePrediction(state){
 app.get("/prediction/:stateId", (req, res) =>{
 	//var state = req.session.stateId
 	//var prediction = statePrediction(state)
-
+	var prediction = 4
 	if(prediction == null){
 		res.status(404).send()
 	}
-	res.status(200).send("ALP")
+	res.status(200).send(Math.round(Math.random()))
 });
 
 app.listen(port);

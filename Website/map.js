@@ -26,3 +26,73 @@ var AUTAS = rsr.path("M369.2,414.49l-0.9,0.45l-0.2,-0.45l-1.4,-0.22l-0.94,-0.71l
 AUTAS.attr({id: 'AU-TAS',title: 'Tasmania',class: 'land',parent: 'states','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'AUTAS');
 
 states.push( AUNT , AUWA , AUACT , AUNSW , AUSA , AUVIC , AUQLD , AUTAS );
+
+var behaviour = 0	// 0 country
+							// 1 state
+var stateIds = ["AUNT" , "AUWA" , "AUACT" , "AUNSW" , "AUSA" , "AUVIC" , "AUQLD" , "AUTAS" ]
+
+for (var i = 0; i < states.length; i++) {
+	states[i].node.id_ = states[i].data().id
+	states[i].node.onmouseenter = (e) => {if(behaviour == 0){e.target.setAttribute('fill', 'grey')}}
+	states[i].node.onmouseleave = (e) => {if(behaviour == 0){e.target.setAttribute('fill', 'black')}}
+	states[i].node.onclick = (e) => {if(behaviour == 0){selectState(e.target.id_)}}
+}
+
+function predictCountry(){
+
+			var blue = 0
+
+
+			behaviour = 1
+			for(var i = 0; i < states.length; i++){
+				if(Math.random() > 0.6){
+					states[i].node.setAttribute('fill', 'blue')
+					blue = blue + 1
+				} else{
+					states[i].node.setAttribute('fill', 'red')
+				}
+			}
+			if(blue < 4){
+				document.getElementById("title").innerHTML = "The Australian Labor Party will hold the majority of the states"
+			} else if (blue > 4){
+				document.getElementById("title").innerHTML = "The National Liberal Party will hold the majority of the states"
+			} else {
+				document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
+			}
+
+		}
+
+function selectState(id){
+
+			document.getElementById("title").innerHTML = "Northern Territory"
+			document.getElementById("selection").value = id
+			document.getElementById("resultText").innerHTML = "The Australian Labour Party will win the state elections"
+
+			x = stateIds.indexOf(id)
+			behaviour = 1
+
+			//setAll("main", "hidden", true)
+			removeAll("sub", "hidden")
+
+			for(var i = 0; i < states.length; i++){
+				if(i != x){
+					states[i].node.setAttribute('fill', 'lightgrey')
+				} else{
+					states[i].node.setAttribute('fill', 'red')
+				}
+			}
+		}
+
+function setAll(str, attr, val){
+	var h = document.getElementsByClassName(str)
+	for(var i = 0; i < h.length; ++i){
+		h[i].setAttribute(attr, val)
+	}
+}
+function removeAll(str, attr){
+	var h = document.getElementsByClassName(str)
+	for(var i = 0; i < h.length; ++i){
+		h[i].removeAttribute(attr)
+	}
+}
+

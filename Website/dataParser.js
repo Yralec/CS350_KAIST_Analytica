@@ -2,7 +2,7 @@ var dataParser = {
 
 	/**
 	 * Fetches data
-	 * @param  {property: value, ...} possible properties: keywords, startDate, endDate, dataRetriever, location
+	 * @param  {property: value, ...} possible properties: keywords, startDate, endDate, dataRetriever, state
 	 * @return object the parsed data
 	 */
 	parseData: function(attr){
@@ -11,16 +11,14 @@ var dataParser = {
 		}
 		var data = []
 		var now = Date.now()
-		if(now < attr.endDate)
-		var endDate = now
-		for(var year = attr.startDate.year; year <= endDate.year; ++year){
-			for(var month = attr.startDate.month; month < endDate.month; ++month){
-				var date1 = new Date(year, month)
-				var date2 = new Date(year, month)
-				var tmp = attr.dataRetriever.retrieveByRegion({keywords: attr.keywords, startDate: date1, endDate: date2, location: attr.location})
+		//for(var year = attr.startDate.year; year <= endDate.year; ++year){
+		//	for(var month = attr.startDate.month; month < endDate.month; ++month){
+				var date1 = startDate	//new Date(year, month)
+				var date2 = Math.min(endDate, now)	//new Date(year, month)
+				var tmp = attr.dataRetriever.retrieveByRegion({keywords: attr.keywords, startDate: date1, endDate: date2, state: attr.state})
 				data.push(tmp)
-			}
-		}
+			//}
+		//}
 
 		return data;
 	}

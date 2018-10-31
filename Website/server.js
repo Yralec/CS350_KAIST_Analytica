@@ -28,6 +28,8 @@ function getGoogleTrendsData(state){
 							mode: dataTypeEnum.TIME,
 							country: "AU",
 							state: state})
+	console.log(parsedData)
+	return parsedData
 }
 
 function statePrediction(state){

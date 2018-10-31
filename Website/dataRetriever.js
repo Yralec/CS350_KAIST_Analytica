@@ -7,7 +7,7 @@ var dataRetriever = {
 			keyword: attr.keywords,
 			startTime: attr.startDate,
 			endTime: attr.endDate,
-			geo: attr.location,
+			geo: attr.state,
 		}).then((data) => {
 			return data
 		}).catch((err) => {

@@ -1,8 +1,7 @@
 
 
-function State(name, result=null) {
-    this.name = name
-    this.result = result
+function State(info, result=null) {
+    this.info = info
 }
 State.prototype.color = function() {
 	if(this.result == 0){
@@ -14,6 +13,15 @@ State.prototype.color = function() {
     }
 
 }
-
-State.prototype.predictionRequest = function() {}
+State.prototype.id = function() {return this.info.data().id}
+State.prototype.name = function() {return this.info.attr('title')}
+State.prototype.node = function() {return this.info.node}
+State.prototype.predictionRequest = function() {
+	server = ""
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', server+'/prediction/'+this.id())
+    xhr.onload = ()=>{window.location.replace(window.location.origin+'/')}
+    xhr.send();
+    
+}
 

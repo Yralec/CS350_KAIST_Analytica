@@ -58,7 +58,7 @@ googleTrends.relatedQueries({
 	endTime: new Date("2018-01-01"),
 	geo: "AU-VIC",
 }).then((data) => {
-	fs.appendFile("./relatedQueries.json", data, (err) => {
+	fs.appendFile("./data/relatedQueries.json", data, (err) => {
 		if (err) {
 			console.error(err)
 		} else {

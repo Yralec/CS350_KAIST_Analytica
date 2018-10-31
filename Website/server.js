@@ -17,16 +17,22 @@ var predictions = []
 //methods
 function getGoogleTrendsData(state){
 
-	dataParser.parseData({	retriever: dataRetriever,
+	var parsedData = dataParser.parseData({	retriever: dataRetriever,
 							mode: dataTypeEnum.TIME
 							country: "AU",
 							state: state})
-
 }
 
-function statePrediction(state)
+function statePrediction(state){
+	var parsedData = getGoogleTrendsData(state)
+	var prediction = hypothesis.predict(parsedData)
+	return prediction
+}
 
 
+//REST API
+app.get('/prediction/:stateId', (req, res){
 
+});
 
 app.listen(port);

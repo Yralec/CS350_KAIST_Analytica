@@ -1,14 +1,4 @@
 
-var stateEnum = {
-    AUNT : 0,
-    AUWA : 1,
-    AUACT : 2,
-    AUNSW : 3,
-    AUSA : 4,
-    AUVIC : 5,
-    AUQLD : 6,
-    AUTAS : 7
-}
 
 var rsr = Raphael('states', 500, 450);
 var states = []

@@ -56,7 +56,6 @@ app.get("/prediction/:stateId", (req, res) =>{
 	if(states.indexOf(state) == -1){
 		return null
 	}
-	state = state.slice(0, 2) + '-' + state.slice(2, state.length)
 
 	statePrediction(state, res)
 });

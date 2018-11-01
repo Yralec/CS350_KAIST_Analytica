@@ -25,7 +25,7 @@ State.prototype.color = function() {
  * @param  {[type]}
  * @return {[type]}
  */
-State.prototype.id = function() {return this.info.data().id}
+State.prototype.id = function() {return this.info.attr('id')}
 State.prototype.name = function() {return this.info.attr('title')}
 State.prototype.node = function() {return this.info.node}
 State.prototype.predictionRequest = function() {

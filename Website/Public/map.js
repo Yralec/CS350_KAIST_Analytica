@@ -66,11 +66,11 @@ function selectState(s){
 			state.prediction = res.prediction
 			info = JSON.parse(res.parsedData)
 			state.drawState()
+			document.getElementById("selection").value = state
+			document.getElementById("title").innerHTML = state.name()
+			document.getElementById("resultText").innerHTML = "The Australian Labour Party will win the state elections"
 		})
 	}
-	document.getElementById("selection").value = state
-	document.getElementById("title").innerHTML = state.name()
-	document.getElementById("resultText").innerHTML = "The Australian Labour Party will win the state elections"
 
 	behaviour = 1
 

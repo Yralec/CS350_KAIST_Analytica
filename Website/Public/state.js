@@ -32,7 +32,7 @@ State.prototype.drawState = function(){
  * @param  {[type]}
  * @return {[type]}
  */
-State.prototype.id = function() {return this.info.attr('id')}
+State.prototype.id = function() {return this.info.data('id')}
 State.prototype.name = function() {return this.info.attr('title')}
 State.prototype.node = function() {return this.info.node}
 
@@ -45,10 +45,10 @@ State.prototype.predictionRequest = function() {
         xhr.responseType = "json";
         xhr.open('GET', server+'/prediction/'+this.id())
         xhr.onload = ()=>{
-            if(res.status == 200){
+            if(xhr.status == 200){
                 resolve(xhr.response)
             } else{
-                reject(res.status)
+                reject(xhr.response.status)
             }
         }
         xhr.send()

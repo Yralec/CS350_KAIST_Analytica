@@ -36,6 +36,7 @@ function statePrediction(state, res){
 		startDate: new Date(2013, 0, 1),
 		endDate: new Date(2014, 0, 1)
 	}
+
 	getGoogleTrendsData(attr, (data)=>{
 
 		var prediction = 1	//hypothesis.predict(parsedData)

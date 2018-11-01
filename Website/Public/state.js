@@ -21,6 +21,13 @@ State.prototype.color = function() {
     }
 
 }
+
+State.prototype.drawState = function(){
+    for(var i = 0; i < states.length; i++){
+        this.node().setAttribute('fill', this.color())
+    }
+}
+
 /**
  * @param  {[type]}
  * @return {[type]}
@@ -28,19 +35,24 @@ State.prototype.color = function() {
 State.prototype.id = function() {return this.info.data().id}
 State.prototype.name = function() {return this.info.attr('title')}
 State.prototype.node = function() {return this.info.node}
+
 State.prototype.predictionRequest = function() {
-    this.prediction = null//reset result in case of consecutive requests
-	server = ""
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = "json";
-    xhr.open('GET', server+'/prediction/'+this.id())
-    xhr.onload = () => {
-        this.prediction = xhr.response.prediction
-        info = JSON.parse(xhr.response.parsedData)
-        drawCountry()
-    }
-    xhr.send();
 
+    var promise = new Promise((resolve, reject)=>{
+        this.prediction = null  //reset result in case of consecutive requests
+        var server = ""
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = "json";
+        xhr.open('GET', server+'/prediction/'+this.id())
+        xhr.onload = ()=>{
+            if(res.status == 200){
+                resolve(xhr.response)
+            } else{
+                reject(res.status)
+            }
+        }
+        xhr.send()
+    })
 
+    return promise
 }
-

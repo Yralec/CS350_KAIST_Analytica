@@ -47,44 +47,44 @@ for (var i = 0; i < states.length; i++) {
 }
 
 function predictCountry(){
-
-			countryPredictionRequest()
-			drawCountry()
-
-
-		}
+	countryPredictionRequest().then(drawCountry)
+}
 
 function selectState(s){
 
-			var state
-			if( (typeof s) == "string"){
-				state = states[s]
-			} else {
-				state = s
-			}
+	var state = null
 
-			if(state.result == null ) {
-				state.predictionRequest()
-			}
-			document.getElementById("selection").value = state
-			document.getElementById("title").innerHTML = state.name()
-			document.getElementById("resultText").innerHTML = "The Australian Labour Party will win the state elections"
+	if( (typeof s) == "string"){
+		state = states[s]
+	} else {
+		state = s
+	}
 
-			behaviour = 1
+	if(state.result == null ) {
+		var x = state.predictionRequest()
+		x.then((res)=>{
+			this.prediction = res.prediction
+			info = JSON.parse(res.parsedData)
+			this.drawState()
+		})
+	}
+	document.getElementById("selection").value = state
+	document.getElementById("title").innerHTML = state.name()
+	document.getElementById("resultText").innerHTML = "The Australian Labour Party will win the state elections"
 
-			//setAll("main", "hidden", true)
-			removeAll("sub", "hidden")
+	behaviour = 1
 
-			for (var i=0; i<states.length; ++i){
-				if(states[i] != state){
-					states[i].node().setAttribute('fill', 'lightgrey')
-				} else{
-					states[i].node().setAttribute('fill', states[i].color())
-				}
-			}
+	//setAll("main", "hidden", true)
+	removeAll("sub", "hidden")
 
-
+	for (var i=0; i<states.length; ++i){
+		if(states[i] != state){
+			states[i].node().setAttribute('fill', 'lightgrey')
+		} else{
+			states[i].node().setAttribute('fill', states[i].color())
 		}
+	}
+}
 
 
 function setAll(str, attr, val){
@@ -102,39 +102,29 @@ function removeAll(str, attr){
 
 function countryPredictionRequest(){
 
+	var promises = []
+
 	for (var i=0; i<states.length; ++i){
-
-		states[i].predictionRequest()
-
+		promises.push(states[i].predictionRequest())
 	}
+
+	return Promise.all(promises)
 }
 
 function drawCountry(){
 
-
 	behaviour = 1
 	for(var i = 0; i < states.length; i++){
-
-		states[i].node().setAttribute('fill', states[i].color())
-
-
-	}
-	var red = 0
-	var ended = states[0].prediction!=null//if prediction is null then all the results were not received
-	for(var i = 0 ; ended && i < states.length; ++i){
-		red+= states[i].prediction
-		ended = (states[i].prediction != null)
+		states[i].drawState()
+		red += states[i].prediction
 	}
 
-
-	if(ended){
-		if(red > 4){
-			document.getElementById("title").innerHTML = "The Australian Labor Party will hold the majority of the states"
-		} else if (red < 4){
-			document.getElementById("title").innerHTML = "The National Liberal Party will hold the majority of the states"
-		} else {
-			document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
-		}
+	if(red > 4){
+		document.getElementById("title").innerHTML = "The Australian Labor Party will hold the majority of the states"
+	} else if (red < 4){
+		document.getElementById("title").innerHTML = "The National Liberal Party will hold the majority of the states"
+	} else {
+		document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
 	}
 
 }

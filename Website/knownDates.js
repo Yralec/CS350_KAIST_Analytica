@@ -1,9 +1,9 @@
 var dates =  [
 	{state: "AU-NT"
 	 elections: [
-		{year:
-		 start:
-		 end:}]},
+		{year: "2001",
+		 start: "yyyy-mm-dd"
+		 end: "yyyy-mm-dd"}]},
 
 	{state: "AU-WA"},
 	{state: "AU-ACT"},

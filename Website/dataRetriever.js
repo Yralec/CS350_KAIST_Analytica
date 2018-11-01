@@ -2,18 +2,15 @@ const googleTrends = require('google-trends-api')
 
 var dataRetriever = {
 
-	retrieveByRegion: function(attr){
-		googleTrends.interestByRegion({
+	retrieveByRegion: function(attr, callback){
+		return googleTrends.interestOverTime({
 			keyword: attr.keywords,
 			startTime: attr.startDate,
 			endTime: attr.endDate,
 			geo: attr.state,
-		}).then((data) => {
-			return data
-		}).catch((err) => {
-			return null
+			category: 396
 		})
 	}
 }
 
-exports.module = dataRetriever
+module.exports = dataRetriever

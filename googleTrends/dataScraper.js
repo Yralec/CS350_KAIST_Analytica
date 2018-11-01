@@ -3,8 +3,8 @@ const googleTrends = require('google-trends-api')
 
 googleTrends.interestByRegion({
 	keyword: ["Liberal", "Labor", "ALB", "NLP"],
-	startTime: new Date("2015-01-01"),
-	endTime: new Date("2018-01-01"),
+	startTime: new Date(2017, 0, 1),
+	endTime: new Date(2017, 11, 31),
 	geo: "AU-VIC",
 }).then((data) => {
 	fs.writeFile("./interestByRegion.json", data, (err) => {
@@ -18,7 +18,7 @@ googleTrends.interestByRegion({
 	console.error(err)
 })
 
-googleTrends.interestOverTime({
+/*googleTrends.interestOverTime({
 	keyword: ["Liberal", "Labor", "ALB", "NLP"],
 	startTime: new Date("2015-01-01"),
 	endTime: new Date("2018-01-01"),
@@ -67,4 +67,4 @@ googleTrends.relatedQueries({
 	})
 }).catch((err) => {
 	console.error(err)
-})
+})*/

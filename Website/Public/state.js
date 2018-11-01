@@ -1,6 +1,6 @@
 
 /**
- * @param 
+ * @param
  * @param {[type]}
  */
 function State(info, prediction=null) {
@@ -36,10 +36,11 @@ State.prototype.predictionRequest = function() {
     xhr.open('GET', server+'/prediction/'+this.id())
     xhr.onload = () => {
         this.prediction = xhr.response.prediction
+        info = JSON.parse(xhr.response.parsedData)
         drawCountry()
     }
     xhr.send();
 
-    
+
 }
 

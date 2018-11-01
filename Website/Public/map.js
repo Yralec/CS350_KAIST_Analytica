@@ -45,7 +45,7 @@ states.push(new State(AUNT),
 			new State(AUSA),
 			new State(AUVIC),
 			new State(AUQLD),
-			new State(AUTAS)); 
+			new State(AUTAS));
 
 var behaviour = 0	// 0 country
 							// 1 state
@@ -60,7 +60,7 @@ function predictCountry(){
 
 			countryPredictionRequest()
 			drawCountry()
-			
+
 
 		}
 
@@ -74,7 +74,7 @@ function selectState(s){
 			}
 
 			if(state.result == null ) {
-				//state.predictionRequest()
+				state.predictionRequest()
 			}
 			document.getElementById("selection").value = state
 			document.getElementById("title").innerHTML = state.name()
@@ -92,8 +92,8 @@ function selectState(s){
 					states[i].node().setAttribute('fill', states[i].color())
 				}
 			}
-				
-			
+
+
 		}
 
 
@@ -111,11 +111,11 @@ function removeAll(str, attr){
 }
 
 function countryPredictionRequest(){
-	
+
 	for (var i=0; i<states.length; ++i){
-		
+
 		states[i].predictionRequest()
-		
+
 	}
 }
 
@@ -124,10 +124,10 @@ function drawCountry(){
 
 	behaviour = 1
 	for(var i = 0; i < states.length; i++){
-		
+
 		states[i].node().setAttribute('fill', states[i].color())
-		
-		
+
+
 	}
 	var red = 0
 	var ended = states[0].prediction!=null//if prediction is null then all the results were not received
@@ -136,7 +136,7 @@ function drawCountry(){
 		ended = (states[i].prediction != null)
 	}
 
-	
+
 	if(ended){
 		if(red > 4){
 			document.getElementById("title").innerHTML = "The Australian Labor Party will hold the majority of the states"
@@ -146,7 +146,7 @@ function drawCountry(){
 			document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
 		}
 	}
-	
+
 }
 
 

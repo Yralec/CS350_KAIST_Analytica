@@ -41,9 +41,11 @@ State.prototype.predictionRequest = function() {
     var promise = new Promise((resolve, reject)=>{
         this.prediction = null  //reset result in case of consecutive requests
         var server = ""
+        var start = document.getElementById("startDateInput").value
+        var end = document.getElementById("endDateInput").value
         var xhr = new XMLHttpRequest();
         xhr.responseType = "json";
-        xhr.open('GET', server+'/prediction/'+this.id())
+        xhr.open('GET', server+'/prediction/'+this.id()+'?start='+start+'&end='+end)
         xhr.onload = ()=>{
             if(xhr.status == 200){
                 resolve(xhr.response)

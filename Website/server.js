@@ -2,13 +2,15 @@ var express = require('express')
 var app = express()
 var http = require('http').Server(app)
 var port = (process.env.PORT || 3000)
+var bodyParser = require('body-parser');
 
 var dataParser = require("./dataParser")
 var dataRetriever = require("./dataRetriever")
 var dataTypeEnum = require("./dataTypeEnum")
 var states = require("./stateNames")
 
-app.use(express.static('Public'));
+app.use(bodyParser.json())
+app.use(express.static('Public'))
 
 //attributes
 var hypothesis = null
@@ -26,15 +28,15 @@ function getGoogleTrendsData(attr, callback){
 	return parsedData
 }
 
-function statePrediction(state, res){
+function statePrediction(obj, res){
 	var attr = {
-		state: state,
+		state: obj.state,
 		country: "AU",
 		mode: dataTypeEnum.TIME,
 		dataRetriever: dataRetriever,
 		keywords: ["Liberal", "Labor", "Labour", "ALP", "LNP"],
-		startDate: new Date(2013, 0, 1),
-		endDate: new Date(2014, 0, 1)
+		startDate: new Date(obj.startDateText),	//new Date(2013, 0, 1),
+		endDate: new Date(obj.endDateText)	//2014, 0, 1)
 	}
 
 	getGoogleTrendsData(attr, (data)=>{
@@ -57,8 +59,14 @@ app.get("/prediction/:stateId", (req, res) =>{
 	if(states.indexOf(state) == -1){
 		return null
 	}
+	console.log(req.body)
+	obj = {
+		state: state,
+		startDateText: req.query.start,
+		endDateText: req.query.end
+	}
 
-	statePrediction(state, res)
+	statePrediction(obj, res)
 });
 
 app.listen(port);

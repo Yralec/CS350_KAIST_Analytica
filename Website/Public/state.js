@@ -58,3 +58,14 @@ State.prototype.predictionRequest = function() {
 
     return promise
 }
+
+State.prototype.getWinnerText = function {
+    if(this.result == null){
+        return "The prediction result is unavailable"
+    } else if(this.result == 1){
+        return "The Australian Labour Party will win the " + this.name()+ " state elections"
+    } else {
+         return "The National Liberal Party will win the " + this.name()+ " state elections"
+    }
+    
+}

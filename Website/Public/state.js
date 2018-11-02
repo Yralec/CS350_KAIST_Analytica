@@ -61,7 +61,7 @@ State.prototype.predictionRequest = function() {
     return promise
 }
 
-State.prototype.getWinnerText = function {
+State.prototype.getWinnerText = function() {
     if(this.result == null){
         return "The prediction result is unavailable"
     } else if(this.result == 1){

@@ -8,7 +8,7 @@ var dataRetriever = {
 			startTime: attr.startDate,
 			endTime: attr.endDate,
 			geo: attr.state,
-			category: attr.category,
+			category: attr.category,//leave the , alone
 		})
 	}
 }

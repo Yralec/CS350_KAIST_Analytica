@@ -2,10 +2,10 @@ const fs = require('fs')
 const googleTrends = require('google-trends-api')
 
 googleTrends.interestByRegion({
-	keyword: ["Liberal", "Labor", "ALB", "NLP"],
-	startTime: new Date(2017, 0, 1),
-	endTime: new Date(2017, 11, 31),
-	geo: "AU-VIC",
+	keyword: ["liberal", "labor", "ALB", "NLP"],
+	startTime: new Date(2004, 03, 1),
+	endTime: new Date(2007, 02, 21),
+	geo: "AU-NSW",
 }).then((data) => {
 	fs.writeFile("./interestByRegion.json", data, (err) => {
 		if (err) {

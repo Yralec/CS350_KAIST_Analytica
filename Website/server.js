@@ -22,10 +22,9 @@ var predictions = {
 
 //methods
 function getGoogleTrendsData(attr, callback){
-	var parsedData = dataParser.parseData(attr, (data)=>{
-		callback(data)
+	dataParser.parseData(attr, (data)=>{
+		callback(JSON.stringify(data))
 	})
-	return parsedData
 }
 
 function statePrediction(obj, res){

@@ -63,11 +63,10 @@ function selectState(s){
 	if(state.result == null ) {
 		var x = state.predictionRequest()
 		x.then((res)=>{
-			state.prediction = res.prediction
 			info = JSON.parse(res.parsedData)
 			state.drawState()
 			document.getElementById("selection").value = state
-			document.getElementById("title").innerHTML = state.name()
+			//document.getElementById("title").innerHTML = state.name()
 			document.getElementById("resultText").innerHTML = "The Australian Labour Party will win the state elections"
 		})
 	}
@@ -105,7 +104,9 @@ function countryPredictionRequest(){
 	var promises = []
 
 	for (var i=0; i<states.length; ++i){
-		promises.push(states[i].predictionRequest())
+		promises.push(states[i].predictionRequest().then((res)=>{
+			res._state = prediction = res.prediction
+		}))
 	}
 
 	return Promise.all(promises)
@@ -114,18 +115,19 @@ function countryPredictionRequest(){
 function drawCountry(){
 
 	behaviour = 1
+	var red = 0
 	for(var i = 0; i < states.length; i++){
 		states[i].drawState()
 		red += states[i].prediction
 	}
 
-	if(red > 4){
+	/*if(red > 4){
 		document.getElementById("title").innerHTML = "The Australian Labor Party will hold the majority of the states"
 	} else if (red < 4){
 		document.getElementById("title").innerHTML = "The National Liberal Party will hold the majority of the states"
 	} else {
 		document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
-	}
+	}*/
 
 }
 

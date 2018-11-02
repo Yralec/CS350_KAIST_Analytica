@@ -69,7 +69,6 @@ app.get("/prediction/:stateId", (req, res) =>{
 	if(states.indexOf(state) == -1){
 		return null
 	}
-	console.log(req.body)
 	obj = {
 		state: state,
 		startDateText: req.query.start,

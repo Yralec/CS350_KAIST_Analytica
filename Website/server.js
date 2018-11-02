@@ -19,6 +19,17 @@ var predictions = {
 	lastUpdate: "",
 	states: []
 }
+//data cached checker
+function checkCacheValidity(){
+
+}
+
+//update cache
+function updateCache(updatedData){
+
+}
+//
+
 
 //methods
 function getGoogleTrendsData(attr, callback){
@@ -44,7 +55,7 @@ function statePrediction(obj, res){
 
 		if(prediction == null){
 			res.status(404).send()
-		} else{
+		} else{//TODO: replace with actual prediction function
 			var x = Math.round(Math.random())
 			res.status(200).send({prediction: x, parsedData: data})
 		}

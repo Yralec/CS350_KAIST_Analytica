@@ -112,7 +112,7 @@ function countryPredictionRequest(){
 }
 
 function drawCountry(){
-
+	var red = 0
 	behaviour = 1
 	for(var i = 0; i < states.length; i++){
 		states[i].drawState()

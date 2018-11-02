@@ -4,16 +4,35 @@
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title> KAIST Analytica</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
-	<h1 id=title>Select a state:</h1>
+  <div class="header">
+  <div class="sides">
+  </div>
+  <div class="sides"></div>
+  <div class="info">
+  <h3><a href="#category">CS350</a></h3>
+    <h1 id="analytica">KAIST Analytica</h1>
+    ──────
+    <br/>
+    <h2>Marchine Learning tool for Australian States elections prediction</h2>
+    ──────
+  </div>
+  </div>
+
+
+
+
+  <div id="page" align="center">
+	<h1 id=state><br/>Select a state:</h1>
 
 	<button class="main" onmousedown="predictCountry()">Country Prediction</button>
 	<button class="sub" hidden onmousedown="simulatePoll()">Simulate Poll</button>
 
-	<div id="menu">
+	<div id="menu"><br/>
 
 
 		<div id="states"></div>
@@ -39,6 +58,7 @@
 		<input type="date" name="endDate" id="endDateInput">
 
 	</div>
+
 
 
 	<script src="raphael-min.js"></script>

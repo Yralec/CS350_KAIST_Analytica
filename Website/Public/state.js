@@ -44,13 +44,15 @@ State.prototype.predictionRequest = function() {
         var start = document.getElementById("startDateInput").value
         var end = document.getElementById("endDateInput").value
         var xhr = new XMLHttpRequest();
+        xhr._state = this
         xhr.responseType = "json";
         xhr.open('GET', server+'/prediction/'+this.id()+'?start='+start+'&end='+end)
         xhr.onload = ()=>{
             if(xhr.status == 200){
+                this.prediction = xhr.response.prediction
                 resolve(xhr.response)
             } else{
-                reject(xhr.response.status)
+                reject(xhr.status)
             }
         }
         xhr.send()

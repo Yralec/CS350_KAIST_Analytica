@@ -37,15 +37,19 @@ var dataParser = {
 			for(var j = 0; j < 2; ++j){
 				var values = new Array(attr.keywords.length).fill(0)
 				var length = data[j].default.geoMapData.length
+				var actualLength = 0;
 				for(var i = 0; i < length; ++i){
 					if(data[j].default.geoMapData[i].hasData.indexOf(false) == -1){
 						values = values.map((val,index) => {
 							var y = data[j].default.geoMapData[i].value[index]
 							return val + y
 						})
+						++actualLength
 					}
 				}
-				values = values.map((x) => {return x/length})
+				if(actualLength != 0){
+					values = values.map((x) => {return x/actualLength})
+				}
 				Array.prototype.push.apply(parsedData, values)
 			}
 			callback(parsedData)

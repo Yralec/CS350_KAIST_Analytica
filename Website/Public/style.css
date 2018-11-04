@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
 html,body{
   margin:0;
-  height:120%;
+  height:100%;
   font-family: 'Josefin Sans', sans-serif;
 
 }
+
+* {
+ box-sizing: border-box;
+}
+
+*:before,
+*:after {
+ box-sizing: border-box;
+}
+
 .header{
   position:relative;
   overflow:hidden;
@@ -119,4 +129,27 @@ html,body{
 
 #state {
 	font-size: 40px;
+}
+
+/* Ok this is the risky part for the footer*/
+
+.main-container {
+ min-height: 100vh; /* will cover the 100% of viewport */
+ overflow: hidden;
+ display: block;
+ position: relative;
+ padding-bottom: 80px; /* height of your footer */
+}
+
+footer {
+  color: white;
+ position: absolute;
+ height: 70px;
+ bottom: 0;
+ width: 100%;
+ background: linear-gradient(to top, transparent, rgb(25,25,25,1)),
+       url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EFODv5zYgijxtshlo/videoblocks-abstract-background-texture-minimalist-concept-art_hjnfen2eg_thumbnail-full01.png");
+
+ /*background:#1B2030 url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EFODv5zYgijxtshlo/videoblocks-abstract-background-texture-minimalist-concept-art_hjnfen2eg_thumbnail-full01.png);
+ background: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(27,32,48,1) 100%);*/
 }

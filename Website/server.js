@@ -13,7 +13,17 @@ app.use(bodyParser.json())
 app.use(express.static('Public'))
 
 //attributes
-var hypothesis = null
+var hypothesis_coefs = [-0.01838134, 0.02340413, -0.00656183, 0.00671311, -0.11187702, 0.10490222
+, -0.0068639,  0.00717435]
+var hypothesis_intercept = -6.66435586e-05
+function hypothesis(features) {
+	var thetaX = hypothesis_intercept
+	for(var i = 0; i < hypothesis_coefs.length; ++i){
+		thetaX += hypothesis_coefs[i]*features[i]
+	}
+	var prediction = 1/(1 + Math.exp(-thetaX))
+	return prediction
+}
 var cachedDataPath = "/data"
 var predictions = {
 	lastUpdate: "",
@@ -34,7 +44,7 @@ function updateCache(updatedData){
 //methods
 function getGoogleTrendsData(attr, callback){
 	dataParser.parseData(attr, (data)=>{
-		callback(JSON.stringify(data))
+		callback(data)
 	})
 }
 
@@ -44,20 +54,16 @@ function statePrediction(obj, res){
 		country: "AU",
 		mode: dataTypeEnum.TIME,
 		dataRetriever: dataRetriever,
-		keywords: ["Liberal", "Labor", "Labour", "ALP", "LNP"],
+		keywords: ["Liberal", "Labor", "ALP", "LNP"],
 		startDate: new Date(obj.startDateText),	//new Date(2013, 0, 1),
 		endDate: new Date(obj.endDateText)	//2014, 0, 1)
 	}
-
 	getGoogleTrendsData(attr, (data)=>{
-
-		var prediction = 1	//hypothesis.predict(parsedData)
-
+		var prediction = Math.round(hypothesis(data))
 		if(prediction == null){
 			res.status(404).send()
-		} else{//TODO: replace with actual prediction function
-			var x = Math.round(Math.random())
-			res.status(200).send({prediction: x, parsedData: data})
+		} else{
+			res.status(200).send({prediction: prediction, parsedData: JSON.stringify(data)})
 		}
 	})
 }

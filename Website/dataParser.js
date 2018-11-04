@@ -32,7 +32,6 @@ var dataParser = {
 				return null
 			})
 		promises.push(promise2)
-
 		Promise.all(promises).then(()=>{
 			var parsedData = []
 			for(var j = 0; j < 2; ++j){

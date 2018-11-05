@@ -59,10 +59,10 @@ function statePrediction(obj, res){
 		endDate: new Date(obj.endDateText)	//2014, 0, 1)
 	}
 	getGoogleTrendsData(attr, (data)=>{
-		var prediction = Math.round(hypothesis(data))
-		if(prediction == null){
+		if(data.indexOf(null) != -1 || data.filter((x)=>{return !isFinite(x)}).length > 0){
 			res.status(404).send()
 		} else{
+			var prediction = Math.round(hypothesis(data))
 			res.status(200).send({prediction: prediction, parsedData: JSON.stringify(data)})
 		}
 	})

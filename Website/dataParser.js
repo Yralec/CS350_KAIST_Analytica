@@ -47,9 +47,7 @@ var dataParser = {
 						++actualLength
 					}
 				}
-				if(actualLength != 0){
-					values = values.map((x) => {return x/actualLength})
-				}
+				values = values.map((x) => {return x/actualLength})
 				Array.prototype.push.apply(parsedData, values)
 			}
 			callback(parsedData)

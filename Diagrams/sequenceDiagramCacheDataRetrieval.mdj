@@ -10424,8 +10424,8 @@
 												"$ref": "AAAAAAFm4st9SiQaDLE="
 											},
 											"font": "Arial;13;0",
-											"left": 70.97900390625,
-											"top": 5,
+											"left": 142.97900390625,
+											"top": 21,
 											"width": 124.56982421875,
 											"height": 13,
 											"text": "Cached data retrieval"
@@ -10437,16 +10437,18 @@
 												"$ref": "AAAAAAFm4st9SiQaDLE="
 											},
 											"font": "Arial;13;1",
-											"left": 5,
-											"top": 5,
+											"left": 77,
+											"top": 21,
 											"width": 60.97900390625,
 											"height": 13,
 											"text": "interaction"
 										}
 									],
 									"font": "Arial;13;0",
+									"left": 72,
+									"top": 16,
 									"width": 695,
-									"height": 595,
+									"height": 401,
 									"nameLabel": {
 										"$ref": "AAAAAAFm4st9SiQbshA="
 									},

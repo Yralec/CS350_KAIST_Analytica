@@ -15,7 +15,7 @@ var db
 app.use(bodyParser.json())
 app.use(express.static('Public'));
 app.get('/', function(req, res){
-    res.sendfile('./Public/index.html');
+    res.sendfile('./Website/Public/index.html');
 });
 
 //attributes

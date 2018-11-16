@@ -1,0 +1,17 @@
+{
+  "name": "KAIST_Analytica",
+  "version": "0.1",
+
+  "engines": {
+    "node": "10.13.0"
+  },
+
+  "dependencies": {
+    "express": "^4.16.4",
+    "http": "^4.15.2",
+    "body-parser": "^1.18.3",
+    "csv-database": "^0.9.2",
+    "fs": "^0.0.1-security",
+    "google-trends-api": "^4.7.0"
+  }
+}

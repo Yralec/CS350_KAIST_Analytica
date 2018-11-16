@@ -51,7 +51,6 @@ function predictCountry(){
 }
 
 function selectState(s){
-	s1 = performance.now()
 	var state = null
 
 	if( (typeof s) == "string"){
@@ -63,14 +62,11 @@ function selectState(s){
 	if(state.result == null ) {
 		var x = state.predictionRequest()
 		x.then((res)=>{
-			info = JSON.parse(res.parsedData)
 			state.drawState()
 
-			document.getElementById("selection").value = state//states.indexOf(state) ou pas nescesaire
+			document.getElementById("stateSelection").value = state//states.indexOf(state) ou pas nescesaire
 			//document.getElementById("title").innerHTML = state.name()
 			document.getElementById("resultText").innerHTML = state.getWinnerText()
-			var s2 = performance.now()
-			console.log((s2-s1)/1000)
 		})
 	}
 

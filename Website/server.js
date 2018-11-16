@@ -2,20 +2,24 @@ var express = require('express')
 var app = express()
 var http = require('http').Server(app)
 var port = (process.env.PORT || 3000)
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser')
+var csvdb = require('csv-database')
 
 var dataParser = require("./dataParser")
 var dataRetriever = require("./dataRetriever")
 var dataTypeEnum = require("./dataTypeEnum")
 var states = require("./stateNames")
 
+var db
+
 app.use(bodyParser.json())
-app.use(express.static('Public'))
+app.use(express.static('Public'));
 
 //attributes
-var hypothesis_coefs = [-0.01838134, 0.02340413, -0.00656183, 0.00671311, -0.11187702, 0.10490222
+const hypothesis_coefs = [-0.01838134, 0.02340413, -0.00656183, 0.00671311, -0.11187702, 0.10490222
 , -0.0068639,  0.00717435]
-var hypothesis_intercept = -6.66435586e-05
+const hypothesis_intercept = -6.66435586e-05
+
 function hypothesis(features) {
 	var thetaX = hypothesis_intercept
 	for(var i = 0; i < hypothesis_coefs.length; ++i){
@@ -24,19 +28,24 @@ function hypothesis(features) {
 	var prediction = 1/(1 + Math.exp(-thetaX))
 	return prediction
 }
-var cachedDataPath = "/data"
-var predictions = {
-	lastUpdate: "",
-	states: []
-}
-//data cached checker
-function checkCacheValidity(){
 
+//data cached checker
+async function checkCacheValidity(state, startDate, endDate){
+	var items = await db.get({state: state, startDate: startDate, endDate: endDate})
+	if(items.length == 1){
+		return true
+	} else if(items.length > 1){
+		console.log("ERR: csvdb, state " +state+ " , multiple copies found")
+		return false
+	} else{
+		return false
+	}
 }
 
 //update cache
-function updateCache(updatedData){
-
+async function updateCache(state, startDate, endDate, updatedData){
+	var added = await db.add({country: 'AU', state: state, startDate: startDate, endDate: endDate, features: updatedData})
+	return added.length == 1
 }
 //
 
@@ -48,24 +57,37 @@ function getGoogleTrendsData(attr, callback){
 	})
 }
 
-function statePrediction(obj, res){
+async function statePrediction(obj, res){
 	var attr = {
 		state: obj.state,
 		country: "AU",
 		mode: dataTypeEnum.TIME,
 		dataRetriever: dataRetriever,
 		keywords: ["Liberal", "Labor", "ALP", "LNP"],
-		startDate: new Date(obj.startDateText),	//new Date(2013, 0, 1),
-		endDate: new Date(obj.endDateText)	//2014, 0, 1)
+		startDate: new Date(obj.startDateText),
+		endDate: new Date(obj.endDateText)
 	}
-	getGoogleTrendsData(attr, (data)=>{
-		if(data.indexOf(null) != -1 || data.filter((x)=>{return !isFinite(x)}).length > 0){
-			res.status(404).send()
-		} else{
-			var prediction = Math.round(hypothesis(data))
-			res.status(200).send({prediction: prediction, parsedData: JSON.stringify(data)})
-		}
-	})
+
+	if(await checkCacheValidity(attr.state, obj.startDateText, obj.endDateText) == true){
+		var get = await db.get({state: attr.state, startDate: obj.startDateText, endDate: obj.endDateText})
+		var prediction = hypothesis(get[0].features.split(",").map(x=>{parseInt(x)}))
+		res.status(200).send({prediction: prediction})
+	} else{
+		getGoogleTrendsData(attr, (data)=>{
+			if(data.indexOf(null) != -1 || data.filter((x)=>{return !isFinite(x)}).length > 0){
+				res.status(404).send()
+			} else{
+				if(updateCache(attr.state, obj.startDateText, obj.endDateText, data)){
+					console.log("cache updated")
+				} else{
+					console.log("ERR: cache update")
+				}
+				var prediction = hypothesis(data)
+				res.status(200).send({prediction: prediction})
+			}
+		})
+	}
+	return
 }
 
 
@@ -83,5 +105,11 @@ app.get("/prediction/:stateId", (req, res) =>{
 
 	statePrediction(obj, res)
 });
+
+async function setup(){
+	db = await csvdb("./data/cache.csv", ["country", "state", "startDate", "endDate", "features"], ",");
+	console.log("setup complete")
+}
+setup()
 
 app.listen(port);

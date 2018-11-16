@@ -49,7 +49,8 @@ State.prototype.predictionRequest = function() {
         xhr.open('GET', server+'/prediction/'+this.id()+'?start='+start+'&end='+end)
         xhr.onload = ()=>{
             if(xhr.status == 200){
-                this.prediction = xhr.response.prediction
+                this.prediction = Math.round(xhr.response.prediction)
+                this.predictionValue = xhr.response.prediction
                 resolve(xhr.response)
             } else{
                 reject(xhr.status)
@@ -69,5 +70,5 @@ State.prototype.getWinnerText = function() {
     } else {
          return "The National Liberal Party will win the " + this.name()+ " state elections"
     }
-    
+
 }

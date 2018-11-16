@@ -7,8 +7,8 @@ var dataRetriever = {
 			keyword: attr.keywords,
 			startTime: attr.startDate,
 			endTime: attr.endDate,
-			geo: attr.state,
-			category: attr.category,//leave the , alone
+			geo: 'AU',//attr.state,
+			category: attr.category
 		})
 	}
 }

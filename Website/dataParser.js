@@ -39,7 +39,7 @@ var dataParser = {
 				var length = data[j].default.geoMapData.length
 				var actualLength = 0;
 				for(var i = 0; i < length; ++i){
-					if(data[j].default.geoMapData[i].hasData.indexOf(false) == -1){
+					if(data[j].default.geoMapData[i].geoCode == attr.state){//data[j].default.geoMapData[i].hasData.indexOf(false) == -1){
 						values = values.map((val,index) => {
 							var y = data[j].default.geoMapData[i].value[index]
 							return val + y
@@ -47,7 +47,11 @@ var dataParser = {
 						++actualLength
 					}
 				}
-				values = values.map((x) => {return x/actualLength})
+				if(actualLength != 0){
+					values = values.map((x) => {return x/actualLength})
+				} else{
+					values = values.map((x)=>{return null})
+				}
 				Array.prototype.push.apply(parsedData, values)
 			}
 			callback(parsedData)

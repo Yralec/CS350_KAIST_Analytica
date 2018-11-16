@@ -14,10 +14,8 @@ var db
 const basePath = "Website/"
 
 app.use(bodyParser.json())
-app.use(express.static('Public'));
-app.get('/', function(req, res){
-    res.sendfile(basePath+'Public/index.html');
-});
+app.use(express.static(__dirname+'/Public'));
+
 
 //attributes
 const hypothesis_coefs = [-0.01838134, 0.02340413, -0.00656183, 0.00671311, -0.11187702, 0.10490222

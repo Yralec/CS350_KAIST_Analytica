@@ -11,11 +11,12 @@ var dataTypeEnum = require("./dataTypeEnum")
 var states = require("./stateNames")
 
 var db
+const basePath = "Website/"
 
 app.use(bodyParser.json())
 app.use(express.static('Public'));
 app.get('/', function(req, res){
-    res.sendfile('./Website/Public/index.html');
+    res.sendfile(basePath+'Public/index.html');
 });
 
 //attributes
@@ -110,7 +111,7 @@ app.get("/prediction/:stateId", (req, res) =>{
 });
 
 async function setup(){
-	db = await csvdb("./data/cache.csv", ["country", "state", "startDate", "endDate", "features"], ",");
+	db = await csvdb(basePath+"data/cache.csv", ["country", "state", "startDate", "endDate", "features"], ",");
 	console.log("setup complete")
 }
 setup()

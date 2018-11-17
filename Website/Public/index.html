@@ -28,14 +28,14 @@
 	<h1 id=state><br/>Select a state:</h1>
 
 	<button class="main" onmousedown="predictCountry()">Country Prediction</button>
-	<button class="sub" hidden onmousedown="simulatePoll()">Simulate Poll</button>
+	<button id="poll" hidden onmousedown="simulatePoll()">Simulate Poll</button>
 
 	<div id="menu"><br/>
 
 
 		<div id="states"></div>
 
-		<div class="sub" id=resultText></div>
+		<div hidden id=resultText></div>
 		<p></p>
 
 		<select id="stateSelection" onchange="selectState(this.value)">
@@ -50,10 +50,8 @@
 			<option value=7>Tasmania</option>
 		</select>
 
-		<label>Start date:</label>
-		<input type="date" name="startDate" id="startDateInput" value="2013-09-01">
-		<label>End date:</label>
-		<input type="date" name="endDate" id="endDateInput" value="2016-08-26">
+		<select hidden id="yearSelection" onchange="selectYear(this.value)"></select>
+
     <br><br><br><br><br>
 	</div>
 
@@ -64,7 +62,7 @@
 </div>
 </div> <!-- End of main container-->
 
-
+	<script src="electionDates.js"></script>
 	<script src="raphael-min.js"></script>
 	<script src="state.js"></script>
     <script src="map.js"></script>

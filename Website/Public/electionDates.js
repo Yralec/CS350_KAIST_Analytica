@@ -1,4 +1,4 @@
-export const dates =  [
+const dates =  [
 	{state: "AU-NT",
 	 elections: [
 		{year: "2001",

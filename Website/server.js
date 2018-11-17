@@ -11,7 +11,6 @@ var dataTypeEnum = require("./dataTypeEnum")
 var states = require("./stateNames")
 
 var db
-const basePath = "Website/"
 
 app.use(bodyParser.json())
 app.use(express.static(__dirname+'/Public'));
@@ -109,9 +108,11 @@ app.get("/prediction/:stateId", (req, res) =>{
 });
 
 async function setup(){
-	db = await csvdb(basePath+"data/cache.csv", ["country", "state", "startDate", "endDate", "features"], ",");
+	db = await csvdb(__dirname+"/data/cache.csv", ["country", "state", "startDate", "endDate", "features"], ",");
 	console.log("setup complete")
 }
 setup()
 
-app.listen(port);
+app.listen(port, ()=>{
+	console.log("Server online on port "+port)
+});

@@ -41,8 +41,20 @@ State.prototype.predictionRequest = function() {
     var promise = new Promise((resolve, reject)=>{
         this.prediction = null  //reset result in case of consecutive requests
         var server = ""
-        var start = document.getElementById("startDateInput").value
-        var end = document.getElementById("endDateInput").value
+        var year = document.getElementById("yearSelection").value
+        var state = states[document.getElementById("stateSelection").value].id()
+        var start
+        var end
+        dates.forEach((x)=>{
+            if(x.state == state){
+                x.elections.forEach((e)=>{
+                    if(e.year == year){
+                        start = e.start
+                        end = e.end
+                    }
+                })
+            }
+        })
         var xhr = new XMLHttpRequest();
         xhr._state = this
         xhr.responseType = "json";

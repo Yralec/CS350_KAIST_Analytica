@@ -52,6 +52,9 @@ var dataParser = {
 				} else{
 					values = values.map((x)=>{return null})
 				}
+				if(values.filter((x)=>{return x == 0}).length == values.length){
+					values = values.map((x)=>{return null})
+				}
 				Array.prototype.push.apply(parsedData, values)
 			}
 			callback(parsedData)

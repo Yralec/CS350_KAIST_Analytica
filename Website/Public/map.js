@@ -60,7 +60,7 @@ function selectState(s){
 		state = s
 	}
 
-	str = s.info.data("id")
+	str = state.info.data("id")
 	document.getElementById("stateSelection").value = states.indexOf(state)
 	document.getElementById("state").innerHTML = state.name()
 	document.getElementById("poll").removeAttribute("hidden")
@@ -89,8 +89,11 @@ function selectYear(y){
 			state.drawState()
 			document.getElementById("resultText").removeAttribute("hidden")
 			document.getElementById("resultText").innerHTML = state.getWinnerText()
+		}).catch((err)=>{
+			state.node().setAttribute('fill', "darkgrey")
+			document.getElementById("resultText").removeAttribute("hidden")
+			document.getElementById("resultText").innerHTML = "Data for this election is not available"
 		})
-
 	}
 
 	behaviour = 1
@@ -163,6 +166,9 @@ function showState(str){
 }
 
 function showElectionDates(str){
+
+	clearElectionDates()
+
 	var electionDates = []
 
 	dates.forEach((x)=>{

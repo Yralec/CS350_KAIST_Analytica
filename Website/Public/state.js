@@ -103,6 +103,14 @@ State.prototype.drawHistogram = function() {
     var lengthX = Math.floor(window.innerWidth*0.6)
     var lengthY = Math.floor(window.innerHeight*0.6)
     ctx.rect(startX, startY, lengthX, lengthY);
+    //
+
+    //draw color boxes
+
+    
+    //draw 0.5 probability threshold line
+    ctx.fillStyle="#FF0000";
+    ctx.fillRect(startX,startY+Math.floor(lengthY/2),lengthX,Math.floor(lengthY/100));
     
 
 

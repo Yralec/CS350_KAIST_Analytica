@@ -84,3 +84,29 @@ State.prototype.getWinnerText = function() {
     }
 
 }
+
+State.prototype.drawHistogram = function() {
+
+    var canvas = document.getElementById("myCanvas");
+    //absolute size canvas
+    canvas.width  = Math.floor(window.innerWidth*0.8);
+    canvas.height = Math.floor(window.innerHeight*0.8);
+
+    var ctx = canvas.getContext("2d");
+
+    //clear previous histogram
+    ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height);
+    
+    //histogram window
+    var startX = Math.floor(window.innerWidth*0.1)
+    var startY = Math.floor(window.innerHeight*0.1)
+    var lengthX = Math.floor(window.innerWidth*0.6)
+    var lengthY = Math.floor(window.innerHeight*0.6)
+    ctx.rect(startX, startY, lengthX, lengthY);
+    
+
+
+
+
+    ctx.stroke();//draw
+}

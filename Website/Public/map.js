@@ -137,8 +137,11 @@ function drawCountry(){
 }
 
 function simulatePoll(){
-	if(document.getElementById("stateSelection").value != null){//if a country was selected (failsafe: should never be false)
+	var state = document.getElementById("stateSelection").value
+	if(state != null){//if a country was selected (failsafe: should never be false)
 		goToSimulatePoll()
+		states[state].drawHistogram()
+		
 	}
 }
 

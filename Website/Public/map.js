@@ -134,16 +134,33 @@ function drawCountry(){
 		states[i].drawState()
 		red += states[i].prediction
 	}
-
-	/*if(red > 4){
-		document.getElementById("title").innerHTML = "The Australian Labor Party will hold the majority of the states"
-	} else if (red < 4){
-		document.getElementById("title").innerHTML = "The National Liberal Party will hold the majority of the states"
-	} else {
-		document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
-	}*/
-
 }
+
+function simulatePoll(){
+	if(document.getElementById("stateSelection").value != null){//if a country was selected (failsafe: should never be false)
+		goToSimulatePoll()
+	}
+}
+
+function returnToStateSelection(){
+	hideAndShow(document.getElementsByClassName("histogram-container"),document.getElementsByClassName("main-container"))
+	window.location.hash="page"
+}
+function goToSimulatePoll(){
+	hideAndShow(document.getElementsByClassName("main-container"),document.getElementsByClassName("histogram-container"))
+
+	
+}
+function hideAndShow(classListHide,classListShow){
+	for (i = 0; i < classListShow.length; i++) {
+    	classListShow[i].style.display = "block"
+	}
+	for (i = 0; i < classListHide.length; i++) {
+    	classListHide[i].style.display = "none"
+	}
+}
+
+
 
 function hideAllStates(){
 	states.forEach((x)=>{

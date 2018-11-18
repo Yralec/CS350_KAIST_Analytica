@@ -141,6 +141,14 @@ html,body{
  padding-bottom: 80px; /* height of your footer */
 }
 
+.histogram-container {
+ min-height: 100vh; /* will cover the 100% of viewport */
+ overflow: hidden;
+ display: hidden;
+ position: relative;
+ padding-bottom: 80px; /* height of your footer */
+}
+
 footer {
   color: white;
  position: absolute;

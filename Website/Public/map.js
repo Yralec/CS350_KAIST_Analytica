@@ -48,6 +48,7 @@ for (var i = 0; i < states.length; i++) {
 
 function predictCountry(){
 	setupPage()
+	drawCountry()
 	countryPredictionRequest().then(drawCountry)
 }
 
@@ -84,7 +85,18 @@ function selectYear(y){
 	}
 
 	if(state.result == null ) {
-		var x = state.predictionRequest(str, document.getElementById("yearSelection".value))
+		var hiddenAttr = document.getElementById("resultText").getAttribute("hidden")
+		if(hiddenAttr == "" || hiddenAttr == null){
+			document.getElementById("resultText").innerHTML = ""
+		}
+
+		//find start and end dates
+		var year = document.getElementById("yearSelection").value
+		var startEnd = state.getHistogramDates(year)
+        var start = startEnd[0]
+        var end = startEnd[1]
+
+		var x = state.predictionRequest(start, end)
 		x.then((res)=>{
 			state.drawState()
 			document.getElementById("resultText").removeAttribute("hidden")
@@ -118,9 +130,15 @@ function countryPredictionRequest(){
 	var promises = []
 
 	for (var i=0; i<states.length; ++i){
-		promises.push(states[i].predictionRequest().then((res)=>{
-			res._state = prediction = res.prediction
-		}))
+
+		//find start and end dates
+		var date = new Date()
+		console.log(getStringFromDate(date))
+		var startEnd = states[i].getHistogramDates(getStringFromDate(date))
+        var start = startEnd[0]
+        var end = startEnd[1]
+
+		promises.push(states[i].predictionRequest(start, end))
 	}
 
 	return Promise.all(promises)
@@ -137,10 +155,12 @@ function drawCountry(){
 }
 
 function simulatePoll(){
-	var state = document.getElementById("stateSelection").value
+	
 	if(state != null){//if a country was selected (failsafe: should never be false)
+		state.getHistogramPredictions().then(state.drawHistogram())
 		goToSimulatePoll()
-		states[state].drawHistogram()
+		
+		
 		
 	}
 }
@@ -216,6 +236,48 @@ function showElectionDates(str){
 		elem.appendChild(opt)
 	}
 
+	//now option
+	var opt = document.createElement("option")
+	opt.textContent = "now"
+	var date = new Date()
+	date.setDate(date.getDate()-1)//minus one day -(26*3600000)
+	opt.value = getStringFromDate(date);//yesterday
+	elem.appendChild(opt)
+
+}
+function getStringFromDate(today){
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; 
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+    	dd = '0'+dd
+	} 
+
+	if(mm<10) {
+	    mm = '0'+mm
+	} 
+
+	today = yyyy + '-' + mm + '-' + dd;
+	
+	return today
+}
+
+function getDateFromString(today){
+	console.log("this is the " + today)
+	
+	//find date elements format is "dd-mm-yyyy"
+	var yyyy = parseInt(today.substring(0, 4));
+	var mm = parseInt(today.substring(5, 7)) - 1;
+	var dd = parseInt(today.substring(8, 10))
+	console.log("yyyy = " + yyyy + " of string" + today.substring(6, 10) + " of today string " + today)
+	//create date
+	date = new Date();
+	date.setFullYear(yyyy,mm,dd)
+
+	console.log(date)
+	
+	return date
 }
 
 function clearElectionDates(){

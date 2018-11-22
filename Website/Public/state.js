@@ -1,10 +1,15 @@
 
+
+//number of intervals
+var NUMBER_OF_INTERVALS = 12 
 /**
  * @param
  * @param {[type]}
  */
-function State(info, prediction=null) {
+function State(info, prediction=null, histogram = [0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5], dates = [0,0,0,0,0,0,0,0,0,0,0,0]) {
     this.info = info
+    this.histogram = histogram
+    this.dates = dates
 }
 
 
@@ -36,25 +41,14 @@ State.prototype.id = function() {return this.info.data('id')}
 State.prototype.name = function() {return this.info.attr('title')}
 State.prototype.node = function() {return this.info.node}
 
-State.prototype.predictionRequest = function() {
+State.prototype.predictionRequest = function(start,end) {
 
     var promise = new Promise((resolve, reject)=>{
         this.prediction = null  //reset result in case of consecutive requests
         var server = ""
-        var year = document.getElementById("yearSelection").value
-        var state = states[document.getElementById("stateSelection").value].id()
-        var start
-        var end
-        dates.forEach((x)=>{
-            if(x.state == state){
-                x.elections.forEach((e)=>{
-                    if(e.year == year){
-                        start = e.start
-                        end = e.end
-                    }
-                })
-            }
-        })
+        
+        var state = this.id()//states[document.getElementById("stateSelection").value].id()
+
         var xhr = new XMLHttpRequest();
         xhr._state = this
         xhr.responseType = "json";
@@ -85,23 +79,63 @@ State.prototype.getWinnerText = function() {
 
 }
 
+State.prototype.getHistogramDates = function(year){
+    var start
+    var end
+    if(year.length == 4){
+        dates.forEach((x)=>{
+            if(x.state == this.id()){
+                x.elections.forEach((e)=>{
+                    if(e.year == year){
+                        start = e.start
+                        end = e.end
+                    }
+                })
+            }
+        })
+    } else {//"now" case
+        console.log("hey")
+        dates.forEach((x)=>{
+
+            if(x.state == this.id()){
+                start = x.elections[x.elections.length-1].end
+                }
+            }
+        )
+        end = year
+    }
+    
+    return [start,end];
+}
+
 State.prototype.getHistogramPredictions = function(){
     var list = []
-    for (var i = 0; i<this.getIntervalNumber();++i){
-        list.push(Math.random());
+    var year = document.getElementById("yearSelection")
+    var startEnd = this.getHistogramDates(year.value)
+    var start = getDateFromString(startEnd[0])
+    var end =  getDateFromString(startEnd[1])
+    var timeInterval = Math.round( (end - start)/NUMBER_OF_INTERVALS) //interval between dates
+    var nextDate = start
+
+    for (var i = 0; i<NUMBER_OF_INTERVALS;++i){
+        dates[i] = getStringFromDate(nextDate)
+
+        
+        nextDate.setTime(nextDate.getTime() + timeInterval)
+        var promise = this.predictionRequest(start,getStringFromDate(nextDate)).then(res => this.histogram[i] = res.prediction.value)
+        list.push(promise);
+        
+        //list.push(Promise.resolve(Math.random()));
     }
-    return list
+    return Promise.all(list)
 }
-State.prototype.getIntervalNumber = function() {
-    return 12
-}
+
 State.prototype.drawHistogram = function() {
 
-    var predictions = this.getHistogramPredictions()
     var canvas = document.getElementById("myCanvas");
     //absolute size canvas
-    canvas.width  = Math.floor(window.innerWidth*0.8);
-    canvas.height = Math.floor(window.innerHeight*0.8);
+    canvas.width  = Math.floor(window.innerWidth);
+    canvas.height = Math.floor(window.innerHeight);
 
     var ctx = canvas.getContext("2d");
 
@@ -111,33 +145,35 @@ State.prototype.drawHistogram = function() {
     //histogram window
     var startX = Math.floor(window.innerWidth*0.15)
     var startY = Math.floor(window.innerHeight*0.1)
-    var lengthX = Math.floor(window.innerWidth*0.6)
+    var lengthX = Math.floor(window.innerWidth*0.8)
     var lengthY = Math.floor(window.innerHeight*0.6)
     ctx.rect(startX, startY, lengthX, lengthY);
     //
     //title
     ctx.font="20px Georgia";
-    ctx.fillText("Predicted probability that NLP wins over time in "+ this.name() + " from " + "to ",startX,startY-20);
+    ctx.fillText("Predicted probability that NLP wins over time in "+ this.name() + " from " + dates[0] + " to " + dates[dates.length-1],startX,startY-20);
     //x axis title
     ctx.font="20px Georgia";
-    ctx.fillText("Time (from a to b in months) ",startX,startY+lengthY+60);
+    ctx.fillText("Time (from "+ dates[0] +" to "+ dates[dates.length-1] +")",startX,startY+lengthY+60);
     //x axis numbers and boxes
-    var intervals = predictions.length
-    var maxIntervals = 12
-    var boxWidth = Math.round(lengthX/(2*maxIntervals))
-    for (var i = 1; i < intervals; i++) {
+
+    var boxWidth = Math.round(lengthX/(2*NUMBER_OF_INTERVALS))
+    for (var i = 0; i < NUMBER_OF_INTERVALS; i++) {
         //x axis number
+        ctx.font="14px Georgia";
         ctx.fillStyle = '#000000'
-        ctx.fillText(String(4*i), startX + i*Math.round(lengthX/maxIntervals), startY + lengthY + 20);
+        ctx.fillText(dates[i], startX + i*Math.round(lengthX/NUMBER_OF_INTERVALS), startY + lengthY + 20);
 
         //color
-        ctx.fillStyle = getColor(predictions[i-1])
+        ctx.fillStyle = getColor(this.histogram[i])
         //boxes
+        console.log("hello " + (1-this.histogram[i])*lengthY )
         ctx.fillRect(
-        startX + i*Math.round(lengthX/maxIntervals ) - Math.round(boxWidth/3),//x pos
-        startY + Math.round((1-predictions[i-1])*lengthY ),//y pos
+        startX + i*Math.round(lengthX/NUMBER_OF_INTERVALS ) + Math.round(boxWidth/3),//x pos
+        startY + Math.round((1-this.histogram[i])*lengthY ),//y pos
         boxWidth,//width
-        predictions[i-1]*lengthY);//height
+        this.histogram[i]*lengthY);//height
+        console.log("hey " + (1-this.histogram[i]))
     }
 
     //y axis title

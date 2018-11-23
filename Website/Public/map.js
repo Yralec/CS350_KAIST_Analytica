@@ -1,5 +1,5 @@
 
-var rsr = Raphael('states', 500, 450);
+var rsr = Raphael('states','','');
 var states = []
 var state //currently selected state
 var country
@@ -155,24 +155,24 @@ function drawCountry(){
 }
 
 function simulatePoll(){
-	
+
 	if(state != null){//if a country was selected (failsafe: should never be false)
 		state.getHistogramPredictions().then(res => state.drawHistogram())
 		goToSimulatePoll()
-		
-		
-		
+
+
+
 	}
 }
 
 function returnToStateSelection(){
-	hideAndShow(document.getElementsByClassName("histogram-container"),document.getElementsByClassName("main-container"))
+	setupPage()
 	window.location.hash="page"
 }
 function goToSimulatePoll(){
 	hideAndShow(document.getElementsByClassName("main-container"),document.getElementsByClassName("histogram-container"))
 
-	
+
 }
 function hideAndShow(classListHide,classListShow){
 	for (i = 0; i < classListShow.length; i++) {
@@ -219,7 +219,6 @@ function showElectionDates(str){
 		}
 	})
 
-
 	var elem = document.getElementById("yearSelection")
 	elem.removeAttribute("hidden")
 
@@ -247,24 +246,24 @@ function showElectionDates(str){
 }
 function getStringFromDate(today){
 	var dd = today.getDate();
-	var mm = today.getMonth()+1; 
+	var mm = today.getMonth()+1;
 	var yyyy = today.getFullYear();
 
 	if(dd<10) {
     	dd = '0'+dd
-	} 
+	}
 
 	if(mm<10) {
 	    mm = '0'+mm
-	} 
+	}
 
 	today = yyyy + '-' + mm + '-' + dd;
-	
+
 	return today
 }
 
 function getDateFromString(today){
-	
+
 	//find date elements format is "dd-mm-yyyy"
 	var yyyy = parseInt(today.substring(0, 4));
 	var mm = parseInt(today.substring(5, 7)) - 1;
@@ -273,7 +272,7 @@ function getDateFromString(today){
 	//create date
 	date = new Date();
 	date.setFullYear(yyyy,mm,dd)
-	
+
 	return date
 }
 
@@ -289,6 +288,8 @@ function setupPage(){
 	document.getElementById("yearSelection").setAttribute("hidden", "true")
 	document.getElementById("resultText").setAttribute("hidden", "true")
 	document.getElementById("poll").setAttribute("hidden", "true")
+	document.getElementsByClassName("histogram-container")[0].style.display = "none"
+	document.getElementsByClassName("main-container")[0].style.display = "block"
 	showAllStates()
 	clearElectionDates()
 }

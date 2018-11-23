@@ -48,6 +48,7 @@ for (var i = 0; i < states.length; i++) {
 
 function predictCountry(){
 	setupPage()
+	drawCountry()
 	countryPredictionRequest().then(drawCountry)
 }
 
@@ -84,7 +85,18 @@ function selectYear(y){
 	}
 
 	if(state.result == null ) {
-		var x = state.predictionRequest(str, document.getElementById("yearSelection".value))
+		var hiddenAttr = document.getElementById("resultText").getAttribute("hidden")
+		if(hiddenAttr == "" || hiddenAttr == null){
+			document.getElementById("resultText").innerHTML = ""
+		}
+
+		//find start and end dates
+		var year = document.getElementById("yearSelection").value
+		var startEnd = state.getHistogramDates(year)
+        var start = startEnd[0]
+        var end = startEnd[1]
+
+		var x = state.predictionRequest(start, end)
 		x.then((res)=>{
 			state.drawState()
 			document.getElementById("resultText").removeAttribute("hidden")
@@ -118,9 +130,14 @@ function countryPredictionRequest(){
 	var promises = []
 
 	for (var i=0; i<states.length; ++i){
-		promises.push(states[i].predictionRequest().then((res)=>{
-			res._state = prediction = res.prediction
-		}))
+
+		//find start and end dates
+		var date = new Date()
+		var startEnd = states[i].getHistogramDates(getStringFromDate(date))
+        var start = startEnd[0]
+        var end = startEnd[1]
+
+		promises.push(states[i].predictionRequest(start, end))
 	}
 
 	return Promise.all(promises)
@@ -134,16 +151,38 @@ function drawCountry(){
 		states[i].drawState()
 		red += states[i].prediction
 	}
-
-	/*if(red > 4){
-		document.getElementById("title").innerHTML = "The Australian Labor Party will hold the majority of the states"
-	} else if (red < 4){
-		document.getElementById("title").innerHTML = "The National Liberal Party will hold the majority of the states"
-	} else {
-		document.getElementById("title").innerHTML = "The Australian Labor Party and the National Liberal Party would hold the same amount of states"
-	}*/
-
 }
+
+function simulatePoll(){
+	
+	if(state != null){//if a country was selected (failsafe: should never be false)
+		state.getHistogramPredictions().then(res => state.drawHistogram())
+		goToSimulatePoll()
+		
+		
+		
+	}
+}
+
+function returnToStateSelection(){
+	hideAndShow(document.getElementsByClassName("histogram-container"),document.getElementsByClassName("main-container"))
+	window.location.hash="page"
+}
+function goToSimulatePoll(){
+	hideAndShow(document.getElementsByClassName("main-container"),document.getElementsByClassName("histogram-container"))
+
+	
+}
+function hideAndShow(classListHide,classListShow){
+	for (i = 0; i < classListShow.length; i++) {
+    	classListShow[i].style.display = "block"
+	}
+	for (i = 0; i < classListHide.length; i++) {
+    	classListHide[i].style.display = "none"
+	}
+}
+
+
 
 function hideAllStates(){
 	states.forEach((x)=>{
@@ -196,6 +235,45 @@ function showElectionDates(str){
 		elem.appendChild(opt)
 	}
 
+	//now option
+	var opt = document.createElement("option")
+	opt.textContent = "now"
+	var date = new Date()
+	date.setDate(date.getDate()-1)//minus one day -(26*3600000)
+	opt.value = getStringFromDate(date);//yesterday
+	elem.appendChild(opt)
+
+}
+function getStringFromDate(today){
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; 
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+    	dd = '0'+dd
+	} 
+
+	if(mm<10) {
+	    mm = '0'+mm
+	} 
+
+	today = yyyy + '-' + mm + '-' + dd;
+	
+	return today
+}
+
+function getDateFromString(today){
+	
+	//find date elements format is "dd-mm-yyyy"
+	var yyyy = parseInt(today.substring(0, 4));
+	var mm = parseInt(today.substring(5, 7)) - 1;
+	var dd = parseInt(today.substring(8, 10))
+
+	//create date
+	date = new Date();
+	date.setFullYear(yyyy,mm,dd)
+	
+	return date
 }
 
 function clearElectionDates(){

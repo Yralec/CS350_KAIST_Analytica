@@ -71,8 +71,7 @@ async function statePrediction(obj, res){
 
 	if(await checkCacheValidity(attr.state, obj.startDateText, obj.endDateText) == true){
 		var get = await db.get({state: attr.state, startDate: obj.startDateText, endDate: obj.endDateText})
-		console.log(get[0])
-		var prediction = hypothesis(get[0].features.split(",").map(x=>{parseInt(x)}))
+		var prediction = hypothesis(get[0].features.split(",").map(x=>{return parseInt(x)}))
 		console.log("cache used")
 		res.status(200).send({prediction: prediction})
 	} else{

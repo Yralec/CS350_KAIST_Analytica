@@ -133,7 +133,6 @@ function countryPredictionRequest(){
 
 		//find start and end dates
 		var date = new Date()
-		console.log(getStringFromDate(date))
 		var startEnd = states[i].getHistogramDates(getStringFromDate(date))
         var start = startEnd[0]
         var end = startEnd[1]
@@ -157,7 +156,7 @@ function drawCountry(){
 function simulatePoll(){
 	
 	if(state != null){//if a country was selected (failsafe: should never be false)
-		state.getHistogramPredictions().then(state.drawHistogram())
+		state.getHistogramPredictions().then(res => state.drawHistogram())
 		goToSimulatePoll()
 		
 		
@@ -264,18 +263,15 @@ function getStringFromDate(today){
 }
 
 function getDateFromString(today){
-	console.log("this is the " + today)
 	
 	//find date elements format is "dd-mm-yyyy"
 	var yyyy = parseInt(today.substring(0, 4));
 	var mm = parseInt(today.substring(5, 7)) - 1;
 	var dd = parseInt(today.substring(8, 10))
-	console.log("yyyy = " + yyyy + " of string" + today.substring(6, 10) + " of today string " + today)
+
 	//create date
 	date = new Date();
 	date.setFullYear(yyyy,mm,dd)
-
-	console.log(date)
 	
 	return date
 }

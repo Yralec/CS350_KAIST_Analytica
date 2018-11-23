@@ -94,7 +94,7 @@ State.prototype.getHistogramDates = function(year){
             }
         })
     } else {//"now" case
-        console.log("hey")
+
         dates.forEach((x)=>{
 
             if(x.state == this.id()){
@@ -116,13 +116,19 @@ State.prototype.getHistogramPredictions = function(){
     var end =  getDateFromString(startEnd[1])
     var timeInterval = Math.round( (end - start)/NUMBER_OF_INTERVALS) //interval between dates
     var nextDate = start
-
-    for (var i = 0; i<NUMBER_OF_INTERVALS;++i){
+    var startDate = getStringFromDate(start)
+    for (let i = 0; i<NUMBER_OF_INTERVALS;++i){
         dates[i] = getStringFromDate(nextDate)
-
         
         nextDate.setTime(nextDate.getTime() + timeInterval)
-        var promise = this.predictionRequest(start,getStringFromDate(nextDate)).then(res => this.histogram[i] = res.prediction.value)
+        var promise = this.predictionRequest(startDate,getStringFromDate(nextDate)).then(res => {
+            console.log(i + " index")
+            console.log(res.prediction + " prediction")
+            this.histogram[i] = res.prediction
+            this.drawHistogram()
+
+
+        })
         list.push(promise);
         
         //list.push(Promise.resolve(Math.random()));
@@ -167,13 +173,21 @@ State.prototype.drawHistogram = function() {
         //color
         ctx.fillStyle = getColor(this.histogram[i])
         //boxes
-        console.log("hello " + (1-this.histogram[i])*lengthY )
+        var startBox = Math.min(startY + Math.round((1-this.histogram[i])*lengthY ), startY+Math.floor(lengthY/2))
+        var endBox = Math.max(startY + Math.round((1-this.histogram[i])*lengthY ), startY+Math.floor(lengthY/2))
+        var height = endBox - startBox
+        //ctx.fillRect(
+        //startX + i*Math.round(lengthX/NUMBER_OF_INTERVALS ) + Math.round(boxWidth/3),//x pos
+        //startY + Math.round((1-this.histogram[i])*lengthY ),//y pos
+        //boxWidth,//width
+        //this.histogram[i]*lengthY);//height
+
         ctx.fillRect(
         startX + i*Math.round(lengthX/NUMBER_OF_INTERVALS ) + Math.round(boxWidth/3),//x pos
-        startY + Math.round((1-this.histogram[i])*lengthY ),//y pos
+        startBox,//y pos
         boxWidth,//width
-        this.histogram[i]*lengthY);//height
-        console.log("hey " + (1-this.histogram[i]))
+        height);//height
+       
     }
 
     //y axis title

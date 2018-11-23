@@ -1,5 +1,5 @@
 
-var rsr = Raphael('states', 500, 450);
+var rsr = Raphael('states','','');
 var states = []
 var state //currently selected state
 var country

@@ -64,7 +64,7 @@ function selectState(s){
 	str = state.info.data("id")
 	document.getElementById("stateSelection").value = states.indexOf(state)
 	document.getElementById("state").innerHTML = state.name()
-	document.getElementById("poll").removeAttribute("hidden")
+	document.getElementById("poll").setAttribute("hidden",true)
 
 	hideAllStates()
 	showState(str)
@@ -75,7 +75,7 @@ function selectState(s){
 }
 
 function selectYear(y){
-
+	document.getElementById("poll").setAttribute("hidden",true)
 	for (var i=0; i<states.length; ++i){
 		if(states[i] != state){
 			states[i].node().setAttribute('fill', 'lightgrey')
@@ -101,6 +101,7 @@ function selectYear(y){
 			state.drawState()
 			document.getElementById("resultText").removeAttribute("hidden")
 			document.getElementById("resultText").innerHTML = state.getWinnerText()
+			document.getElementById("poll").removeAttribute("hidden")
 		}).catch((err)=>{
 			state.node().setAttribute('fill', "darkgrey")
 			document.getElementById("resultText").removeAttribute("hidden")

@@ -1,7 +1,7 @@
 
 
 //number of intervals
-var NUMBER_OF_INTERVALS = 12 
+var NUMBER_OF_INTERVALS = 12
 /**
  * @param
  * @param {[type]}
@@ -46,7 +46,7 @@ State.prototype.predictionRequest = function(start,end) {
     var promise = new Promise((resolve, reject)=>{
         this.prediction = null  //reset result in case of consecutive requests
         var server = ""
-        
+
         var state = this.id()//states[document.getElementById("stateSelection").value].id()
 
         var xhr = new XMLHttpRequest();
@@ -104,7 +104,7 @@ State.prototype.getHistogramDates = function(year){
         )
         end = year
     }
-    
+
     return [start,end];
 }
 
@@ -118,8 +118,8 @@ State.prototype.getHistogramPredictions = function(){
     var nextDate = start
     var startDate = getStringFromDate(start)
     for (let i = 0; i<NUMBER_OF_INTERVALS;++i){
-        dates[i] = getStringFromDate(nextDate)
-        
+        this.dates[i] = getStringFromDate(nextDate)
+
         nextDate.setTime(nextDate.getTime() + timeInterval)
         var promise = this.predictionRequest(startDate,getStringFromDate(nextDate)).then(res => {
             console.log(i + " index")
@@ -130,7 +130,7 @@ State.prototype.getHistogramPredictions = function(){
 
         })
         list.push(promise);
-        
+
         //list.push(Promise.resolve(Math.random()));
     }
     return Promise.all(list)
@@ -147,7 +147,7 @@ State.prototype.drawHistogram = function() {
 
     //clear previous histogram
     ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height);
-    
+
     //histogram window
     var startX = Math.floor(window.innerWidth*0.15)
     var startY = Math.floor(window.innerHeight*0.1)
@@ -157,10 +157,10 @@ State.prototype.drawHistogram = function() {
     //
     //title
     ctx.font="20px Georgia";
-    ctx.fillText("Predicted probability that NLP wins over time in "+ this.name() + " from " + dates[0] + " to " + dates[dates.length-1],startX,startY-20);
+    ctx.fillText("Predicted probability that NLP wins over time in "+ this.name() + " from " + this.dates[0] + " to " + this.dates[this.dates.length-1],startX,startY-20);
     //x axis title
     ctx.font="20px Georgia";
-    ctx.fillText("Time (from "+ dates[0] +" to "+ dates[dates.length-1] +")",startX,startY+lengthY+60);
+    ctx.fillText("Time (from "+ this.dates[0] +" to "+ this.dates[this.dates.length-1] +")",startX,startY+lengthY+60);
     //x axis numbers and boxes
 
     var boxWidth = Math.round(lengthX/(2*NUMBER_OF_INTERVALS))
@@ -168,7 +168,7 @@ State.prototype.drawHistogram = function() {
         //x axis number
         ctx.font="14px Georgia";
         ctx.fillStyle = '#000000'
-        ctx.fillText(dates[i], startX + i*Math.round(lengthX/NUMBER_OF_INTERVALS), startY + lengthY + 20);
+        ctx.fillText(this.dates[i], startX + i*Math.round(lengthX/NUMBER_OF_INTERVALS), startY + lengthY + 20);
 
         //color
         ctx.fillStyle = getColor(this.histogram[i])
@@ -187,7 +187,7 @@ State.prototype.drawHistogram = function() {
         startBox,//y pos
         boxWidth,//width
         height);//height
-       
+
     }
 
     //y axis title
@@ -204,8 +204,8 @@ State.prototype.drawHistogram = function() {
         ctx.fillText("0."+String(precision-i+1), startX - 40,startY+i*Math.round(lengthY/(precision+1)));
     }
     ctx.fillText("0", startX - 40,startY+lengthY);
-    
-    
+
+
 
     //draw color boxes
 
@@ -213,7 +213,7 @@ State.prototype.drawHistogram = function() {
     //draw 0.5 probability threshold line
     ctx.fillStyle="#FF0000";
     ctx.fillRect(startX,startY+Math.floor(lengthY/2),lengthX,Math.floor(lengthY/100));
-    
+
 
 
 

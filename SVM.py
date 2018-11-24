@@ -10,7 +10,7 @@ x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.05,random_state=0
 
 
 from sklearn.svm import SVC #building the model
-clf=SVC(kernel='poly',C=0.01,degree=20,gamma=0.1,random_state=0,probability=True)
+clf=SVC(kernel='poly',C=10,gamma=0.01,random_state=0,probability=True)
 clf.fit(x_train,y_train)
 pred=clf.predict(x_test)
 

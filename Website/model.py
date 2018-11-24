@@ -7,5 +7,8 @@ clf = load('model.joblib')
 import sys, json
 lines = sys.argv
 data = json.loads(lines[1])
+
+#proba = clf.predict([data])
+#print(proba[0])
 proba = clf.predict_proba([data])
-print(proba[0][0])
+print(proba[0][1])

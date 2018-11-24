@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC #building the model
 from joblib import load
-clf = load('model.joblib')
+clf = load('Website/model.joblib')
 
 import sys, json
 lines = sys.argv

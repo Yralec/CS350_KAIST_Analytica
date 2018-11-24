@@ -23,11 +23,13 @@ const hypothesis_intercept = 0.00064419
 
 function hypothesis(features) {
 	var p = new Promise((res, rej)=>{
-			ps.PythonShell.run('model.py', {
+		console.log(__dirname)
+		ps.PythonShell.run(__dirname+'/model.py', {
 			mode: 'text',
 			args: [JSON.stringify(features)]
 		}, (err, results)=>{
 			if(err){rej(err)}
+			console.log("res: "+results)
 			res(results)
 		})
 	})

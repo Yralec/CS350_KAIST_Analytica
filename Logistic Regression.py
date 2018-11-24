@@ -1,5 +1,5 @@
 import pandas as pd
-election=pd.read_csv("AU-NSW.csv")
+election=pd.read_csv("trainingData1.csv")
 #print election.head()
 feature_cols=['F1','F2','F3','F4','F5','F6','F7','F8']
 x=election[feature_cols] #feature

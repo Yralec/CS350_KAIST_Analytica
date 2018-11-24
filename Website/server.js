@@ -4,6 +4,7 @@ var http = require('http').Server(app)
 var port = (process.env.PORT || 3000)
 var bodyParser = require('body-parser')
 var csvdb = require('csv-database')
+var ps = require('python-shell')
 
 var dataParser = require("./dataParser")
 var dataRetriever = require("./dataRetriever")
@@ -17,17 +18,30 @@ app.use(express.static(__dirname+'/Public'));
 
 
 //attributes
-const hypothesis_coefs = [-0.01838134, 0.02340413, -0.00656183, 0.00671311, -0.11187702, 0.10490222
-, -0.0068639,  0.00717435]
-const hypothesis_intercept = -6.66435586e-05
+const hypothesis_coefs = [-0.28558575, -0.03708615, 0.46132637, -0.07423499, 0.12833407, -0.01007019, -0.0240681, -0.02977629]
+const hypothesis_intercept = 0.00064419
 
 function hypothesis(features) {
-	var thetaX = hypothesis_intercept
+	var p = new Promise((res, rej)=>{
+			ps.PythonShell.run('model.py', {
+			mode: 'text',
+			args: [JSON.stringify(features)]
+		}, (err, results)=>{
+			if(err){rej(err)}
+			res(results)
+		})
+	})
+
+	/*var p = new Promise((res, rej)=>{
+		var thetaX = hypothesis_intercept
 	for(var i = 0; i < hypothesis_coefs.length; ++i){
 		thetaX += hypothesis_coefs[i]*features[i]
 	}
 	var prediction = 1/(1 + Math.exp(-thetaX))
-	return prediction
+	res(JSON.stringify(prediction))
+	})*/
+
+	return p
 }
 
 //data cached checker
@@ -71,9 +85,9 @@ async function statePrediction(obj, res){
 
 	if(await checkCacheValidity(attr.state, obj.startDateText, obj.endDateText) == true){
 		var get = await db.get({state: attr.state, startDate: obj.startDateText, endDate: obj.endDateText})
-		var prediction = hypothesis(get[0].features.split(",").map(x=>{return parseInt(x)}))
+		hypothesis(get[0].features.split(",").map(x=>{return parseInt(x)})).then((result)=>{res.status(200).send({prediction: JSON.parse(result[0])})
+		}).catch((err)=>{"ERR: prediction"})
 		console.log("cache used")
-		res.status(200).send({prediction: prediction})
 	} else{
 		getGoogleTrendsData(attr, (data)=>{
 			if(data.indexOf(null) != -1 || data.filter((x)=>{return !isFinite(x)}).length > 0){
@@ -84,8 +98,8 @@ async function statePrediction(obj, res){
 				} else{
 					console.log("ERR: cache update")
 				}
-				var prediction = hypothesis(data)
-				res.status(200).send({prediction: prediction})
+				hypothesis(data).then((result)=>{res.status(200).send({prediction: JSON.parse(result[0])})
+				}).catch((err)=>{"ERR: prediction"})
 			}
 		})
 	}

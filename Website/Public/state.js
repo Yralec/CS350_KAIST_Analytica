@@ -17,13 +17,22 @@ function State(info, prediction=null, histogram = [0.5,0.5,0.5,0.5,0.5,0.5,0.5,0
  * @return {the color of the corresponding state}
  */
 State.prototype.color = function() {
-	if(this.prediction == 0){
-    	return 'blue'
-	} else if (this.prediction == 1){
-		return 'red'
+    if(!relative){
+        if(this.prediction == 0){
+            return 'blue'
+        } else if (this.prediction == 1){
+            return 'red'
+        } else {
+            return 'purple'
+        }
     } else {
-    	return 'purple'
+        if(this.prediction == null){
+            return 'purple'
+        } else {
+            return getColor(this.prediction)
+        }
     }
+	
 
 }
 
@@ -109,6 +118,8 @@ State.prototype.getHistogramDates = function(year){
 }
 
 State.prototype.getHistogramPredictions = function(){
+    this.histogram = [0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]//reintialize dates incase of requesting several times the same country
+
     var list = []
     var year = document.getElementById("yearSelection")
     var startEnd = this.getHistogramDates(year.value)
@@ -117,6 +128,7 @@ State.prototype.getHistogramPredictions = function(){
     var timeInterval = Math.round( (end - start)/NUMBER_OF_INTERVALS) //interval between dates
     var nextDate = start
     var startDate = getStringFromDate(start)
+
     for (let i = 0; i<NUMBER_OF_INTERVALS;++i){
         this.dates[i] = getStringFromDate(nextDate)
 

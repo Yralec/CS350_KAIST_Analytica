@@ -29,7 +29,7 @@
 
 	<button class="main" onmousedown="predictCountry()">Country Prediction</button>
 	<button id="poll" hidden onmousedown="simulatePoll()">Simulate Poll</button>
-
+	<button id="relative" onmousedown="toRelativeOrAbsoluteProbabilities()">Absolute Probabilities</button>
 	<div id="menu"><br/>
 
 
@@ -62,7 +62,7 @@
 </div>
 </div> <!-- End of main container-->
 
-<div class="histogram-container">
+<div class="histogram-container" hidden="true">
 
 	<button id="return" onmousedown="returnToStateSelection()">Return to state selection</button>
 	<canvas id="myCanvas" width="500" height="300" style="border:1px solid #d3d3d3;">

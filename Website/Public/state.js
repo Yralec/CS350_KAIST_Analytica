@@ -169,7 +169,7 @@ State.prototype.drawHistogram = function() {
     //
     //title
     ctx.font="20px Georgia";
-    ctx.fillText("Predicted probability that NLP wins over time in "+ this.name() + " from " + this.dates[0] + " to " + this.dates[this.dates.length-1],startX,startY-20);
+    ctx.fillText("Predicted probability that ALP wins over time in "+ this.name() + " from " + this.dates[0] + " to " + this.dates[this.dates.length-1],startX,startY-20);
     //x axis title
     ctx.font="20px Georgia";
     ctx.fillText("Time (from "+ this.dates[0] +" to "+ this.dates[this.dates.length-1] +")",startX,startY+lengthY+60);
@@ -207,7 +207,7 @@ State.prototype.drawHistogram = function() {
     ctx.fillStyle = '#000000'
     ctx.fillText("Predicted",10,startY+Math.floor(lengthY/2)-2*22);
     ctx.fillText("probability",10,startY+Math.floor(lengthY/2)-1*22);
-    ctx.fillText("that NLP",10,startY+Math.floor(lengthY/2)+0*22);
+    ctx.fillText("that ALP",10,startY+Math.floor(lengthY/2)+0*22);
     ctx.fillText("wins (0-1)",10,startY+Math.floor(lengthY/2)+1*22);
     //y axis numbers
     var precision = 9

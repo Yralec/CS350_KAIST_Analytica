@@ -8,9 +8,8 @@
 </head>
 
 <body>
-<div class="main-container">
 
-  <div class="header">
+<div class="header">
   <div class="info">
   <h3><a href="#category">CS350</a></h3>
     <h1 id="analytica">KAIST Analytica</h1>
@@ -19,9 +18,10 @@
     <h2>Machine Learning tool for Australian States elections prediction</h2>
     ──────
   </div>
-  </div>
+</div>
 
 
+<div class="main-container">
 
 
   <div id="page" align="center">
@@ -29,7 +29,6 @@
 
 	<button class="main" onmousedown="predictCountry()">Country Prediction</button>
 	<button id="poll" hidden onmousedown="simulatePoll()">Simulate Poll</button>
-	<button id="relative" onmousedown="toRelativeOrAbsoluteProbabilities()">Absolute Probabilities</button>
 	<div id="menu"><br/>
 
 
@@ -55,11 +54,12 @@
     <br><br><br><br><br>
 	</div>
 
-  <footer>
-    <h2>KAIST - Fall 2018</h2>
-  </footer>
-
 </div>
+
+<footer>
+    <h2>KAIST - Fall 2018</h2>
+</footer>
+
 </div> <!-- End of main container-->
 
 <div class="histogram-container" hidden="true">
@@ -67,12 +67,18 @@
 	<button id="return" onmousedown="returnToStateSelection()">Return to state selection</button>
 	<canvas id="myCanvas" width="500" height="300" style="border:1px solid #d3d3d3;">
 	Your browser does not support the HTML5 canvas tag.</canvas>
+
+	<footer>
+    	<h2>KAIST - Fall 2018</h2>
+	</footer>
 </div> <!-- End of histogram-container-->
 
 	<script src="electionDates.js"></script>
 	<script src="raphael-min.js"></script>
 	<script src="state.js"></script>
     <script src="map.js"></script>
+
+
 
 </body>
 
